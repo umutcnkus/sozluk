@@ -21,7 +21,9 @@ export class WordCard extends React.Component<WordCardProps, WordCardState> {
     }
 
     componentDidMount(){
-        const wordToSearch = decodeURIComponent(window.location.pathname.split('/')[1]);
+        const urlPathName = window.location.pathname;
+        const urlParamsArray = urlPathName.split('/');
+        const wordToSearch = decodeURIComponent(urlParamsArray[urlParamsArray.length - 1]);
         this.getDefinition(wordToSearch)
     }
 
