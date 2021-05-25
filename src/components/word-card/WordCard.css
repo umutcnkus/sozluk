@@ -6,6 +6,7 @@
     padding: 75px 100px;
     border-radius: 2px;
     font-family: 'Cormorant Garamond';
+    border: 15px solid rgba(118, 8, 23, 1);
 }
 
 .inner-box {

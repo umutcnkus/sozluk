@@ -1,9 +1,13 @@
 import React from 'react';
 import { getDefinition } from '../../helpers/ApiHelper';
 import { WordDefinition } from '../../models/interfaces';
+import { RouteComponentProps } from 'react-router-dom'
 import './WordCard.css';
 
-export interface WordCardProps {}
+export interface OnboardingPageRouterProps {
+    word: string
+}
+export interface WordCardProps extends RouteComponentProps<OnboardingPageRouterProps> { }
 
 export interface WordCardState {
     definitions: WordDefinition[];
@@ -12,7 +16,7 @@ export interface WordCardState {
 
 export class WordCard extends React.Component<WordCardProps, WordCardState> {
 
-    constructor(props: WordCardProps){
+    constructor(props: WordCardProps) {
         super(props);
         this.state = {
             definitions: [],
@@ -20,18 +24,17 @@ export class WordCard extends React.Component<WordCardProps, WordCardState> {
         }
     }
 
-    componentDidMount(){
-        const urlPathName = window.location.pathname;
-        const urlParamsArray = urlPathName.split('/');
-        const wordToSearch = decodeURIComponent(urlParamsArray[urlParamsArray.length - 1]);
+    componentDidMount() {
+        const { word } = this.props.match.params;
+        const wordToSearch = decodeURIComponent(word);
         this.getDefinition(wordToSearch)
     }
 
-    componentDidUpdate(){
+    componentDidUpdate() {
         this.getDefinition(this.state.word);
     }
 
-    getDefinition(word: string){
+    getDefinition(word: string) {
         getDefinition(word).then(
             (data: any) => {
                 try {
@@ -45,13 +48,13 @@ export class WordCard extends React.Component<WordCardProps, WordCardState> {
                     })
                 }
                 catch {
-                    this.setState({ word: "hata"})
+                    this.setState({ word: "hata" })
                 }
             }
         )
     }
 
-    render(){
+    render() {
         return (
             <div className="word-card-container">
                 <div className="inner-box">
@@ -61,8 +64,8 @@ export class WordCard extends React.Component<WordCardProps, WordCardState> {
                     <div className="definitions">
                         {this.state.definitions.map((definition, i) => (
                             <div className="definition-container">
-                                <div className="definition-number">{ i + 1 }. </div>
-                                <div className="definition-text">{ definition.text } </div>
+                                <div className="definition-number">{i + 1}. </div>
+                                <div className="definition-text">{definition.text} </div>
                             </div>
                         ))
 
