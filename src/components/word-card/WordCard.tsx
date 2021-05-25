@@ -30,10 +30,6 @@ export class WordCard extends React.Component<WordCardProps, WordCardState> {
         this.getDefinition(wordToSearch)
     }
 
-    componentDidUpdate() {
-        this.getDefinition(this.state.word);
-    }
-
     getDefinition(word: string) {
         getDefinition(word).then(
             (data: any) => {
@@ -48,7 +44,8 @@ export class WordCard extends React.Component<WordCardProps, WordCardState> {
                     })
                 }
                 catch {
-                    this.setState({ word: "hata" })
+                    this.setState({ word: "hata" });
+                    this.getDefinition("hata")
                 }
             }
         )
