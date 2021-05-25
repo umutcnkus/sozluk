@@ -40,3 +40,31 @@
 .definition-text {
     font-size: 18px;
 }
+
+@media only screen and (max-width: 600px) {
+    .word-card-container {
+        width: 75%;
+        padding: 30px;
+        border: 5px solid rgba(118, 8, 23, 1);
+    }
+
+    .inner-box {
+        padding: 10px;
+    }
+
+    .word-title {
+        font-size: 2rem;
+    }
+
+    .definition-container {
+        margin: 10px 0;
+    }
+
+    .definition-text {
+        font-size: 1rem;
+    }
+
+    .definition-number {
+        font-size: 1.25rem;
+    }
+}
