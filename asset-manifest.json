@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/sozluk/static/css/main.7bc1686e.chunk.css",
+    "main.css": "/sozluk/static/css/main.7d3bf8e0.chunk.css",
     "main.js": "/sozluk/static/js/main.e09f93a8.chunk.js",
     "main.js.map": "/sozluk/static/js/main.e09f93a8.chunk.js.map",
     "runtime-main.js": "/sozluk/static/js/runtime-main.32ae789e.js",
@@ -10,13 +10,13 @@
     "static/js/3.c069ad7f.chunk.js": "/sozluk/static/js/3.c069ad7f.chunk.js",
     "static/js/3.c069ad7f.chunk.js.map": "/sozluk/static/js/3.c069ad7f.chunk.js.map",
     "index.html": "/sozluk/index.html",
-    "static/css/main.7bc1686e.chunk.css.map": "/sozluk/static/css/main.7bc1686e.chunk.css.map",
+    "static/css/main.7d3bf8e0.chunk.css.map": "/sozluk/static/css/main.7d3bf8e0.chunk.css.map",
     "static/js/2.e7709530.chunk.js.LICENSE.txt": "/sozluk/static/js/2.e7709530.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.32ae789e.js",
     "static/js/2.e7709530.chunk.js",
-    "static/css/main.7bc1686e.chunk.css",
+    "static/css/main.7d3bf8e0.chunk.css",
     "static/js/main.e09f93a8.chunk.js"
   ]
 }
