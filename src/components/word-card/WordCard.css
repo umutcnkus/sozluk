@@ -1,24 +1,23 @@
-.word-card-container{
+.word-card-container {
     width: 50%;
-    background: #fff7e6;
+    background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
     display: flex;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    padding: 100px 150px;
-    font-family: "Cormorant Garamond"
-
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+    padding: 75px 100px;
+    border-radius: 2px;
+    font-family: 'Cormorant Garamond';
 }
 
-.inner-box{
+.inner-box {
     border-top: 2px solid black;
     border-bottom: 2px solid black;
     width: 100%;
     padding: 30px;
     text-align: left;
-
 }
 
 .word-title {
-    font-size: 72px;
+    font-size: 48px;
     font-weight: bold;
     margin: 0;
 }
@@ -32,11 +31,11 @@
 }
 
 .definition-number {
-    font-size: 36px;
+    font-size: 24px;
     margin-right: 10px;
     line-height: 20px;
 }
 
 .definition-text {
-    font-size: 24px;
+    font-size: 18px;
 }
