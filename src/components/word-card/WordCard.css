@@ -43,7 +43,7 @@
 
 @media only screen and (max-width: 600px) {
     .word-card-container {
-        width: 75%;
+        max-width: 75%;
         padding: 30px;
         border: 5px solid rgba(118, 8, 23, 1);
     }
