@@ -1,5 +1,5 @@
 .word-card-container {
-    width: 50%;
+    max-width: 50%;
     background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
     display: flex;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
