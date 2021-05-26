@@ -25,6 +25,11 @@ export class WordCard extends React.Component<WordCardProps, WordCardState> {
     }
 
     componentDidMount() {
+        this.searchWordFromUrl();
+        window.addEventListener("hashchange", (e) => this.searchWordFromUrl())
+    }
+
+    searchWordFromUrl(){
         const { word } = this.props.match.params;
         const wordToSearch = decodeURIComponent(word);
         this.getDefinition(wordToSearch)
