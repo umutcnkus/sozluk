@@ -1,8 +1,15 @@
 # An experimental Turkish dictionary app.
 
-### Usage
+![resim](https://user-images.githubusercontent.com/10044468/119658807-387a9080-be36-11eb-92d2-8e655548f4f0.png)
+
+### Usage - Search
+
+    https://umutcnkus.github.io/sozluk/#/
+
+### Usage - Go To Definition Directly
 
     https://umutcnkus.github.io/sozluk/#/:wordToSearch
- ### Example
+
+### Example
 
     https://umutcnkus.github.io/sozluk/#/kılavuz
