@@ -57,7 +57,7 @@ export class WordCard extends React.Component<WordCardProps, WordCardState> {
                     </div>
                     <div className="definitions">
                         {this.state.definitions.map((definition, i) => (
-                            <Animated animationIn="fadeInUp" animationOut="fadeOut" animationInDuration={500 + i * 100} isVisible={this.state.isVisible}>
+                            <Animated animationIn="fadeInUp" animationOut="fadeOut" animationInDuration={1500 + i * 100} isVisible={this.state.isVisible}>
                                 <div className="definition-container" key={i}>
                                     <div className="definition-number">{i + 1}. </div>
                                     <div className="definition-text">{definition.text} </div>
