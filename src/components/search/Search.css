@@ -21,3 +21,14 @@
     outline: none;
     border-bottom: 4px solid rgba(118, 8, 23, 1);
 }
+
+@media only screen and (max-width: 600px) {
+    .search-box-container {
+        width: 90%;
+        align-self: flex-start;
+        margin-top: 35%;
+    }
+    .search-box {
+        padding: 0;
+    }
+}
