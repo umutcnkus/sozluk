@@ -1,0 +1,23 @@
+.search-box-container {
+    width: 50%;
+    align-self: flex-start;
+    margin-top: 10%;
+}
+.search-box {
+    font-family: 'Cormorant Garamond';
+    border: none;
+    width: 100%;
+    height: 50px;
+    font-size: 48px;
+    background: none;
+    color: #e6e9f0;
+    padding: 20px 10px;
+    border-bottom: 2px solid rgba(118, 8, 23, 1);
+}
+
+.search-box:focus,
+.search-box:active {
+    border: none;
+    outline: none;
+    border-bottom: 4px solid rgba(118, 8, 23, 1);
+}
