@@ -31,7 +31,7 @@ export class WordCard extends React.Component<WordCardProps, WordCardState> {
 
     searchWordFromUrl(){
         const { word } = this.props.match.params;
-        const wordToSearch = decodeURIComponent(word);
+        const wordToSearch = decodeURIComponent(word).toLowerCase();
         this.getDefinition(wordToSearch)
     }
 
