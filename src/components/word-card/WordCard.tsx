@@ -42,8 +42,8 @@ export class WordCard extends React.Component<WordCardProps, WordCardState> {
         getDefinition(word)
             .then((data: any) => this.setState({ definitions: data, word: word, isVisible: true }))
             .catch(() => {
-                this.setState({ word: "hata" });
-                getDefinition("hata")
+                this.getDefinition("hata")
+                this.setState({ word: "hata"});
             }
             )
     }
