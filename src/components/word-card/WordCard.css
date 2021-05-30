@@ -1,26 +1,27 @@
 .word-card-container {
-    max-width: 50%;
-    background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+    max-width: 40%;
+    min-width: 25%;
+    background: #fffffe;
     display: flex;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
-    padding: 75px 100px;
+    padding: 25px 50px;
     border-radius: 2px;
+    border: 5px solid #e53170;
     font-family: 'Cormorant Garamond';
-    border: 15px solid rgba(118, 8, 23, 1);
 }
 
 .inner-box {
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
     width: 100%;
-    padding: 30px;
+    padding: 20px;
     text-align: left;
 }
 
 .word-title {
-    font-size: 48px;
+    font-size: 42px;
     font-weight: bold;
     margin: 0;
+    color: #0f0e17;
+    border-bottom: 2px solid #0f0e17;
+    padding: 10px 0;
 }
 
 .definition-container {
@@ -29,6 +30,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     margin: 15px 0;
+    color: #2e2f3e;
 }
 
 .definition-number {
@@ -38,22 +40,25 @@
 }
 
 .definition-text {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 @media only screen and (max-width: 600px) {
     .word-card-container {
         max-width: 75%;
         padding: 30px;
-        border: 5px solid rgba(118, 8, 23, 1);
+        border: 2px solid #e53170;
     }
 
     .inner-box {
-        padding: 10px;
+        padding: 5px;
+        border: none;
     }
 
     .word-title {
         font-size: 2rem;
+        padding: 5px 0;
+        border-bottom: 2px solid #0f0e17;
     }
 
     .definition-container {

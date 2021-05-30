@@ -12,14 +12,17 @@
     background: none;
     color: #e6e9f0;
     padding: 20px 10px;
-    border-bottom: 2px solid rgba(118, 8, 23, 1);
+    transition: 0.2s ease;
+    border-bottom: 1px solid #ff8906;
 }
 
 .search-box:focus,
 .search-box:active {
     border: none;
     outline: none;
-    border-bottom: 4px solid rgba(118, 8, 23, 1);
+    border-width: 4px;
+    border-bottom: 3px solid #ff8906;
+    transition: 0.2s ease-in-out;
 }
 
 @media only screen and (max-width: 600px) {
