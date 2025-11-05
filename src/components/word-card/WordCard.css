@@ -6,10 +6,10 @@
     background: #FFFFFF;
     display: flex;
     padding: 48px 56px;
-    border: 1px solid #E0E0E0;
+    border: 1px solid #D1D5DB;
     border-radius: 4px;
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 .word-card-container::-webkit-scrollbar {
@@ -17,16 +17,16 @@
 }
 
 .word-card-container::-webkit-scrollbar-track {
-    background: #F5F5F5;
+    background: #F3F4F6;
 }
 
 .word-card-container::-webkit-scrollbar-thumb {
-    background: #BDBDBD;
+    background: #9CA3AF;
     border-radius: 3px;
 }
 
 .word-card-container::-webkit-scrollbar-thumb:hover {
-    background: #9E9E9E;
+    background: #6B7280;
 }
 
 .inner-box {
@@ -36,7 +36,7 @@
 }
 
 .title-container {
-    border-bottom: 1px solid #E0E0E0;
+    border-bottom: 1px solid #D1D5DB;
     padding-bottom: 20px;
     margin-bottom: 32px;
 }
@@ -45,27 +45,27 @@
     font-size: 40px;
     font-weight: 600;
     margin: 0 0 16px 0;
-    color: #212121;
+    color: #111827;
     letter-spacing: -0.5px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
 }
 
 .etymology-badge {
     display: inline-flex;
     align-items: center;
-    background: #F5F5F5;
-    color: #616161;
+    background: #EFF6FF;
+    color: #1E40AF;
     padding: 6px 14px;
     border-radius: 4px;
     font-size: 13px;
     margin-right: 10px;
     margin-top: 10px;
-    border: 1px solid #E0E0E0;
+    border: 1px solid #BFDBFE;
 }
 
 .etymology-icon {
     margin-right: 6px;
     font-size: 14px;
-    opacity: 0.7;
 }
 
 .etymology-text {
@@ -75,19 +75,18 @@
 .pronunciation {
     display: inline-flex;
     align-items: center;
-    background: #F5F5F5;
-    color: #616161;
+    background: #F3F4F6;
+    color: #374151;
     padding: 6px 14px;
     border-radius: 4px;
     font-size: 13px;
     margin-top: 10px;
-    border: 1px solid #E0E0E0;
+    border: 1px solid #D1D5DB;
 }
 
 .pronunciation-icon {
     margin-right: 6px;
     font-size: 14px;
-    opacity: 0.7;
 }
 
 .pronunciation-text {
@@ -100,7 +99,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     margin: 16px 0;
-    color: #424242;
+    color: #1F2937;
     line-height: 1.8;
 }
 
@@ -109,7 +108,7 @@
     font-weight: 600;
     margin-right: 12px;
     min-width: 24px;
-    color: #757575;
+    color: #4B5563;
 }
 
 .definition-text {
@@ -123,13 +122,13 @@
 .section-container {
     margin-top: 36px;
     padding-top: 24px;
-    border-top: 1px solid #E0E0E0;
+    border-top: 1px solid #D1D5DB;
 }
 
 .section-title {
     font-size: 12px;
     font-weight: 600;
-    color: #757575;
+    color: #4B5563;
     margin: 0 0 16px 0;
     text-transform: uppercase;
     letter-spacing: 1.2px;
@@ -144,20 +143,21 @@
 }
 
 .compound-word-tag {
-    background: #FAFAFA;
-    color: #424242;
+    background: #F3F4F6;
+    color: #1F2937;
     padding: 6px 12px;
-    border: 1px solid #E0E0E0;
+    border: 1px solid #D1D5DB;
     border-radius: 3px;
     font-size: 14px;
     font-style: normal;
+    font-weight: 500;
     transition: all 0.2s ease;
 }
 
 .compound-word-tag:hover {
-    background: #F5F5F5;
-    border-color: #BDBDBD;
-    color: #212121;
+    background: #E5E7EB;
+    border-color: #9CA3AF;
+    color: #111827;
     cursor: default;
 }
 
@@ -173,14 +173,14 @@
 .proverb-item {
     display: flex;
     align-items: flex-start;
-    background: #FAFAFA;
+    background: #FEF3C7;
     padding: 14px 16px;
     border-radius: 4px;
-    border-left: 3px solid #BDBDBD;
+    border-left: 3px solid #F59E0B;
 }
 
 .proverb-bullet {
-    color: #757575;
+    color: #92400E;
     font-size: 16px;
     margin-right: 10px;
     line-height: 1.8;
@@ -188,7 +188,7 @@
 
 .proverb-text {
     font-size: 15px;
-    color: #424242;
+    color: #78350F;
     font-style: italic;
     line-height: 1.8;
     word-wrap: break-word;
@@ -205,15 +205,15 @@
 }
 
 .example-item {
-    background: #FAFAFA;
+    background: #F3F4F6;
     padding: 16px 18px;
     border-radius: 4px;
-    border-left: 3px solid #9E9E9E;
+    border-left: 3px solid #6366F1;
 }
 
 .example-text {
     font-size: 15px;
-    color: #424242;
+    color: #1F2937;
     font-style: italic;
     line-height: 1.8;
     margin: 0 0 10px 0;
@@ -223,7 +223,7 @@
 
 .example-author {
     font-size: 13px;
-    color: #757575;
+    color: #4B5563;
     font-weight: 600;
     margin: 0;
     text-align: right;
