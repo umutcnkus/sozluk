@@ -107,7 +107,7 @@ export class WordCard extends React.Component<WordCardProps, WordCardState> {
                     {wordData && wordData.birlesikler && (
                         <Animated animationIn="fadeInUp" animationOut="fadeOut" animationInDuration={1800} isVisible={this.state.isVisible}>
                             <div className="section-container compound-words-section">
-                                <h4 className="section-title">📚 Birleşik Kelimeler</h4>
+                                <h4 className="section-title">Birleşik Kelimeler</h4>
                                 <div className="compound-words">
                                     {wordData.birlesikler.split(',').map((compound, i) => (
                                         <span className="compound-word-tag" key={i}>{compound.trim()}</span>
@@ -121,7 +121,7 @@ export class WordCard extends React.Component<WordCardProps, WordCardState> {
                     {wordData && wordData.atasozu && wordData.atasozu.length > 0 && (
                         <Animated animationIn="fadeInUp" animationOut="fadeOut" animationInDuration={2000} isVisible={this.state.isVisible}>
                             <div className="section-container proverbs-section">
-                                <h4 className="section-title">💬 Atasözleri ve Deyimler</h4>
+                                <h4 className="section-title">Atasözleri ve Deyimler</h4>
                                 <div className="proverbs-list">
                                     {wordData.atasozu.map((proverb, i) => (
                                         <div className="proverb-item" key={i}>
@@ -138,7 +138,7 @@ export class WordCard extends React.Component<WordCardProps, WordCardState> {
                     {wordData && wordData.orneklerListe && wordData.orneklerListe.length > 0 && (
                         <Animated animationIn="fadeInUp" animationOut="fadeOut" animationInDuration={2200} isVisible={this.state.isVisible}>
                             <div className="section-container examples-section">
-                                <h4 className="section-title">📖 Edebiyattan Örnekler</h4>
+                                <h4 className="section-title">Edebiyattan Örnekler</h4>
                                 <div className="examples-list">
                                     {wordData.orneklerListe.map((example, i) => (
                                         <div className="example-item" key={i}>
