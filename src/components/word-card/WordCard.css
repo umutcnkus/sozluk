@@ -15,13 +15,56 @@
     text-align: left;
 }
 
+.title-container {
+    border-bottom: 2px solid #0f0e17;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
 .word-title {
     font-size: 42px;
     font-weight: bold;
-    margin: 0;
+    margin: 0 0 10px 0;
     color: #0f0e17;
-    border-bottom: 2px solid #0f0e17;
-    padding: 10px 0;
+}
+
+.etymology-badge {
+    display: inline-flex;
+    align-items: center;
+    background: #ff8906;
+    color: #fffffe;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.etymology-icon {
+    margin-right: 5px;
+}
+
+.etymology-text {
+    font-weight: 500;
+}
+
+.pronunciation {
+    display: inline-flex;
+    align-items: center;
+    background: #e53170;
+    color: #fffffe;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.pronunciation-icon {
+    margin-right: 5px;
+}
+
+.pronunciation-text {
+    font-weight: 500;
 }
 
 .definition-container {
@@ -41,6 +84,105 @@
 
 .definition-text {
     font-size: 16px;
+}
+
+/* Section Container Styles */
+.section-container {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e6e9f0;
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #0f0e17;
+    margin: 0 0 15px 0;
+}
+
+/* Compound Words Section */
+.compound-words {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.compound-word-tag {
+    background: #f3f3f3;
+    color: #2e2f3e;
+    padding: 6px 14px;
+    border-radius: 15px;
+    font-size: 14px;
+    border: 1px solid #e6e9f0;
+    transition: all 0.3s ease;
+}
+
+.compound-word-tag:hover {
+    background: #ff8906;
+    color: #fffffe;
+    border-color: #ff8906;
+    transform: translateY(-2px);
+    cursor: pointer;
+}
+
+/* Proverbs Section */
+.proverbs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.proverb-item {
+    display: flex;
+    align-items: flex-start;
+    background: #fff9e6;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #ff8906;
+}
+
+.proverb-bullet {
+    color: #ff8906;
+    font-size: 20px;
+    margin-right: 10px;
+    line-height: 1.5;
+}
+
+.proverb-text {
+    font-size: 16px;
+    color: #2e2f3e;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+/* Literary Examples Section */
+.examples-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.example-item {
+    background: #f8f8fc;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #e53170;
+}
+
+.example-text {
+    font-size: 16px;
+    color: #2e2f3e;
+    font-style: italic;
+    line-height: 1.6;
+    margin: 0 0 10px 0;
+}
+
+.example-author {
+    font-size: 14px;
+    color: #e53170;
+    font-weight: 600;
+    margin: 0;
+    text-align: right;
 }
 
 @media only screen and (max-width: 600px) {
@@ -71,5 +213,45 @@
 
     .definition-number {
         font-size: 1.25rem;
+    }
+
+    .word-title {
+        font-size: 2rem;
+    }
+
+    .etymology-badge,
+    .pronunciation {
+        font-size: 12px;
+        padding: 4px 10px;
+        margin-top: 8px;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+
+    .compound-word-tag {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
+    .proverb-item {
+        padding: 12px;
+    }
+
+    .proverb-text {
+        font-size: 14px;
+    }
+
+    .example-item {
+        padding: 15px;
+    }
+
+    .example-text {
+        font-size: 14px;
+    }
+
+    .example-author {
+        font-size: 12px;
     }
 }
