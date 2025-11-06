@@ -1,32 +1,44 @@
 .word-card-container {
-    max-width: 720px;
+    max-width: 750px;
     width: 90%;
     max-height: 85vh;
     overflow-y: auto;
-    background: #FFFFFF;
+    background: #FFF8E7;
     display: flex;
-    padding: 48px 56px;
-    border: 1px solid #E5E7EB;
-    border-radius: 12px;
+    padding: 56px 64px;
+    border: 3px solid #8B6B47;
+    border-radius: 2px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 32px rgba(87, 62, 38, 0.15), inset 0 0 0 1px rgba(139, 107, 71, 0.2);
+    position: relative;
+}
+
+.word-card-container::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    border: 1px solid rgba(139, 107, 71, 0.3);
+    pointer-events: none;
 }
 
 .word-card-container::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
 }
 
 .word-card-container::-webkit-scrollbar-track {
-    background: #F9FAFB;
+    background: #F5ECD7;
 }
 
 .word-card-container::-webkit-scrollbar-thumb {
-    background: #D1D5DB;
-    border-radius: 3px;
+    background: #A0826D;
+    border-radius: 4px;
 }
 
 .word-card-container::-webkit-scrollbar-thumb:hover {
-    background: #9CA3AF;
+    background: #8B6B47;
 }
 
 .inner-box {
@@ -36,30 +48,44 @@
 }
 
 .title-container {
-    border-bottom: 2px solid #F3F4F6;
+    border-bottom: 2px solid #D4A574;
     padding-bottom: 24px;
     margin-bottom: 32px;
+    position: relative;
+}
+
+.title-container::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #D4A574 50%, transparent);
 }
 
 .word-title {
-    font-size: 42px;
+    font-size: 44px;
     font-weight: 700;
-    margin: 0 0 16px 0;
-    color: #0F172A;
-    letter-spacing: -1px;
+    margin: 0 0 18px 0;
+    color: #3E2723;
+    letter-spacing: 0.5px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    text-shadow: 0 1px 2px rgba(62, 39, 35, 0.1);
 }
 
 .etymology-badge {
     display: inline-flex;
     align-items: center;
-    background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
-    color: #FFFFFF;
-    padding: 7px 16px;
-    border-radius: 20px;
+    background: #8B6B47;
+    color: #FFF8E7;
+    padding: 6px 14px;
+    border-radius: 3px;
     font-size: 13px;
-    margin-right: 10px;
+    margin-right: 12px;
     margin-top: 12px;
-    border: none;
+    border: 1px solid #6B4F3A;
+    box-shadow: 0 2px 4px rgba(62, 39, 35, 0.15);
 }
 
 .etymology-icon {
@@ -74,13 +100,14 @@
 .pronunciation {
     display: inline-flex;
     align-items: center;
-    background: #F1F5F9;
-    color: #334155;
-    padding: 7px 16px;
-    border-radius: 20px;
+    background: #A67C52;
+    color: #FFF8E7;
+    padding: 6px 14px;
+    border-radius: 3px;
     font-size: 13px;
     margin-top: 12px;
-    border: none;
+    border: 1px solid #8B6B47;
+    box-shadow: 0 2px 4px rgba(62, 39, 35, 0.15);
 }
 
 .pronunciation-icon {
@@ -97,21 +124,21 @@
     width: 100%;
     align-items: flex-start;
     justify-content: flex-start;
-    margin: 16px 0;
-    color: #1F2937;
-    line-height: 1.8;
+    margin: 18px 0;
+    color: #2C1810;
+    line-height: 1.9;
 }
 
 .definition-number {
-    font-size: 16px;
-    font-weight: 600;
-    margin-right: 12px;
-    min-width: 24px;
-    color: #4B5563;
+    font-size: 17px;
+    font-weight: 700;
+    margin-right: 14px;
+    min-width: 28px;
+    color: #6B4F3A;
 }
 
 .definition-text {
-    font-size: 16px;
+    font-size: 17px;
     word-wrap: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
@@ -119,18 +146,32 @@
 
 /* Section Container Styles */
 .section-container {
-    margin-top: 36px;
-    padding-top: 24px;
-    border-top: 1px solid #D1D5DB;
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid #D4A574;
+    position: relative;
+}
+
+.section-container::before {
+    content: '◆';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #FFF8E7;
+    padding: 0 12px;
+    color: #D4A574;
+    font-size: 12px;
 }
 
 .section-title {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
-    color: #64748B;
-    margin: 0 0 18px 0;
+    color: #6B4F3A;
+    margin: 0 0 20px 0;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
+    text-align: center;
 }
 
 /* Compound Words Section */
@@ -142,22 +183,23 @@
 }
 
 .compound-word-tag {
-    background: #F8FAFC;
-    color: #0F172A;
+    background: #F5ECD7;
+    color: #3E2723;
     padding: 8px 16px;
-    border: 1.5px solid #E2E8F0;
-    border-radius: 8px;
-    font-size: 14px;
-    font-style: normal;
+    border: 1.5px solid #D4A574;
+    border-radius: 2px;
+    font-size: 15px;
+    font-style: italic;
     font-weight: 500;
     transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(62, 39, 35, 0.1);
 }
 
 .compound-word-tag:hover {
-    background: #F1F5F9;
-    border-color: #CBD5E1;
+    background: #EFE2C7;
+    border-color: #B8895B;
     transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 3px 8px rgba(62, 39, 35, 0.15);
     cursor: pointer;
 }
 
@@ -165,7 +207,7 @@
 .proverbs-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
     max-height: 400px;
     overflow-y: auto;
 }
@@ -173,73 +215,115 @@
 .proverb-item {
     display: flex;
     align-items: flex-start;
-    background: linear-gradient(135deg, #FEF5E7 0%, #FEF9F3 100%);
-    padding: 16px 20px;
-    border-radius: 10px;
-    border-left: 4px solid #F59E0B;
+    background: linear-gradient(to bottom, #FFFAF0, #FFF5E6);
+    padding: 20px 24px;
+    border: 2px solid #C9A66B;
+    border-radius: 2px;
+    position: relative;
+    box-shadow: 0 3px 12px rgba(62, 39, 35, 0.12), inset 0 0 0 1px rgba(212, 165, 116, 0.3);
     transition: all 0.2s ease;
 }
 
+.proverb-item::before {
+    content: '❝';
+    position: absolute;
+    top: -8px;
+    left: 16px;
+    font-size: 32px;
+    color: #C9A66B;
+    background: #FFFAF0;
+    padding: 0 8px;
+}
+
 .proverb-item:hover {
-    transform: translateX(4px);
-    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(62, 39, 35, 0.18), inset 0 0 0 1px rgba(212, 165, 116, 0.4);
 }
 
 .proverb-bullet {
-    color: #F59E0B;
-    font-size: 16px;
-    margin-right: 12px;
-    line-height: 1.8;
+    color: #C9A66B;
+    font-size: 18px;
+    margin-right: 14px;
+    line-height: 1.9;
 }
 
 .proverb-text {
-    font-size: 15px;
-    color: #0F172A;
+    font-size: 16px;
+    color: #2C1810;
     font-style: italic;
-    line-height: 1.8;
+    line-height: 1.9;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    font-family: 'Cormorant Garamond', Georgia, serif;
 }
 
 /* Literary Examples Section */
 .examples-list {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 18px;
     max-height: 400px;
     overflow-y: auto;
 }
 
 .example-item {
-    background: linear-gradient(135deg, #F0F9FF 0%, #F8FAFC 100%);
-    padding: 18px 22px;
-    border-radius: 10px;
-    border-left: 4px solid #3B82F6;
+    background: linear-gradient(to bottom, #FAF6F0, #F5ECD7);
+    padding: 24px 28px;
+    border: 2px solid #8B6B47;
+    border-radius: 2px;
+    position: relative;
+    box-shadow: 0 3px 12px rgba(62, 39, 35, 0.12), inset 0 0 0 1px rgba(139, 107, 71, 0.2);
     transition: all 0.2s ease;
 }
 
+.example-item::before,
+.example-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #C9A66B;
+}
+
+.example-item::before {
+    top: 8px;
+    left: 8px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.example-item::after {
+    bottom: 8px;
+    right: 8px;
+    border-left: none;
+    border-top: none;
+}
+
 .example-item:hover {
-    transform: translateX(4px);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(62, 39, 35, 0.18), inset 0 0 0 1px rgba(139, 107, 71, 0.3);
 }
 
 .example-text {
-    font-size: 15px;
-    color: #0F172A;
+    font-size: 16px;
+    color: #2C1810;
     font-style: italic;
-    line-height: 1.8;
-    margin: 0 0 12px 0;
+    line-height: 1.9;
+    margin: 0 0 16px 0;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    font-family: 'Cormorant Garamond', Georgia, serif;
 }
 
 .example-author {
-    font-size: 13px;
-    color: #3B82F6;
-    font-weight: 600;
+    font-size: 14px;
+    color: #6B4F3A;
+    font-weight: 700;
     margin: 0;
     text-align: right;
     font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .example-author::before {
@@ -250,9 +334,15 @@
     .word-card-container {
         max-width: 95%;
         width: 95%;
-        padding: 32px 24px;
+        padding: 36px 28px;
         max-height: 90vh;
-        border-radius: 8px;
+    }
+
+    .word-card-container::before {
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
     }
 
     .inner-box {
@@ -260,56 +350,58 @@
     }
 
     .word-title {
-        font-size: 32px;
+        font-size: 34px;
     }
 
     .title-container {
-        padding-bottom: 18px;
+        padding-bottom: 20px;
         margin-bottom: 24px;
     }
 
     .definition-container {
-        margin: 12px 0;
+        margin: 14px 0;
     }
 
     .definition-text {
-        font-size: 15px;
+        font-size: 16px;
     }
 
     .definition-number {
-        font-size: 15px;
+        font-size: 16px;
     }
 
     .etymology-badge,
     .pronunciation {
         font-size: 12px;
-        padding: 6px 12px;
-        border-radius: 16px;
+        padding: 5px 12px;
     }
 
     .section-title {
         font-size: 11px;
-        letter-spacing: 1.2px;
+        letter-spacing: 1.5px;
     }
 
     .section-container {
-        margin-top: 28px;
-        padding-top: 20px;
+        margin-top: 32px;
+        padding-top: 24px;
     }
 
     .compound-word-tag {
-        font-size: 13px;
-        padding: 6px 12px;
-        border-radius: 6px;
+        font-size: 14px;
+        padding: 7px 14px;
     }
 
     .proverb-item {
-        padding: 14px 16px;
-        border-radius: 8px;
+        padding: 18px 20px;
+    }
+
+    .proverb-item::before {
+        font-size: 28px;
+        top: -6px;
     }
 
     .proverb-text {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .proverbs-list {
@@ -317,16 +409,21 @@
     }
 
     .example-item {
-        padding: 16px 18px;
-        border-radius: 8px;
+        padding: 20px 22px;
+    }
+
+    .example-item::before,
+    .example-item::after {
+        width: 16px;
+        height: 16px;
     }
 
     .example-text {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .example-author {
-        font-size: 12px;
+        font-size: 13px;
     }
 
     .examples-list {
