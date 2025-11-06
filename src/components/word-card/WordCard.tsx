@@ -106,12 +106,19 @@ export class WordCard extends React.Component<WordCardProps, WordCardState> {
             });
     }
 
+    handleBackToHome = () => {
+        this.props.history.push('/');
+    }
+
     render() {
         const { wordData, isFavorited } = this.state;
 
         return (this.state.isVisible &&
             <Animated className="word-card-container" animationIn="fadeIn" animationOut="fadeOut" animationInDuration={1000} isVisible={this.state.isVisible}>
                 <div className="inner-box">
+                    <button className="back-to-home-button" onClick={this.handleBackToHome}>
+                        ← Ana Sayfa
+                    </button>
                     <div className="title-container">
                         <div className="title-row">
                             <h3 className="word-title">{this.state.word}</h3>

@@ -1,8 +1,43 @@
+.search-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.navigation-bar {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 0;
+}
+
+.nav-button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #ff8906;
+    color: #e6e9f0;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.nav-button:hover {
+    background: rgba(255, 137, 6, 0.2);
+    border-color: #ffa64d;
+    transform: translateY(-2px);
+}
+
 .search-box-container {
     width: 50%;
-    align-self: flex-start;
-    margin-top: 10%;
+    margin-top: 5%;
+    margin-bottom: 60px;
 }
+
 .search-box {
     font-family: 'Cormorant Garamond';
     border: none;
@@ -25,13 +60,115 @@
     transition: 0.2s ease-in-out;
 }
 
-@media only screen and (max-width: 600px) {
+.features-container {
+    display: flex;
+    gap: 32px;
+    max-width: 1200px;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.word-of-day-card,
+.recent-searches-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 137, 6, 0.3);
+    border-radius: 8px;
+    padding: 32px;
+    min-width: 280px;
+    max-width: 400px;
+    flex: 1;
+    transition: all 0.3s ease;
+}
+
+.word-of-day-card:hover,
+.recent-searches-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 137, 6, 0.5);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(255, 137, 6, 0.2);
+}
+
+.card-icon {
+    font-size: 32px;
+    display: block;
+    margin-bottom: 16px;
+}
+
+.card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #ffa64d;
+    margin: 0 0 20px 0;
+}
+
+.word-of-day-word {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #e6e9f0;
+    cursor: pointer;
+    padding: 16px;
+    background: rgba(255, 137, 6, 0.1);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.word-of-day-word:hover {
+    background: rgba(255, 137, 6, 0.2);
+    color: #ffa64d;
+    transform: scale(1.05);
+}
+
+.recent-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.recent-item {
+    font-size: 18px;
+    font-weight: 500;
+    color: #e6e9f0;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid #ff8906;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.recent-item:hover {
+    background: rgba(255, 137, 6, 0.15);
+    padding-left: 24px;
+    color: #ffa64d;
+}
+
+@media only screen and (max-width: 768px) {
     .search-box-container {
         width: 90%;
-        align-self: flex-start;
-        margin-top: 35%;
+        margin-top: 10%;
+        margin-bottom: 40px;
     }
+
     .search-box {
         padding: 0;
+        font-size: 36px;
+    }
+
+    .features-container {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .word-of-day-card,
+    .recent-searches-card {
+        min-width: 100%;
+        padding: 24px;
+    }
+
+    .navigation-bar {
+        justify-content: center;
     }
 }

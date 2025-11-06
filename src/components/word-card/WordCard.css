@@ -47,6 +47,25 @@
     text-align: left;
 }
 
+.back-to-home-button {
+    background: transparent;
+    border: 2px solid #8B6B47;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2C1810;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    margin-bottom: 20px;
+}
+
+.back-to-home-button:hover {
+    background: #FFF0D1;
+    border-color: #6B4423;
+    transform: translateX(-2px);
+}
+
 .title-container {
     border-bottom: 2px solid #D4A574;
     padding-bottom: 24px;
