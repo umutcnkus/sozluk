@@ -64,6 +64,13 @@
     background: linear-gradient(to right, transparent, #D4A574 50%, transparent);
 }
 
+.title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
 .word-title {
     font-size: 44px;
     font-weight: 700;
@@ -72,6 +79,35 @@
     letter-spacing: 0.5px;
     font-family: 'Cormorant Garamond', Georgia, serif;
     text-shadow: 0 1px 2px rgba(62, 39, 35, 0.1);
+    flex: 1;
+}
+
+.favorite-button {
+    font-size: 32px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #C9A66B;
+    transition: all 0.3s ease;
+    padding: 4px 8px;
+    line-height: 1;
+    margin-bottom: 18px;
+}
+
+.favorite-button:hover {
+    color: #D4A574;
+    transform: scale(1.1);
+}
+
+.favorite-button.favorited {
+    color: #D4A574;
+    animation: heartBeat 0.3s ease;
+}
+
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
 }
 
 .etymology-badge {
@@ -215,6 +251,7 @@
 .proverb-item {
     display: flex;
     align-items: flex-start;
+    justify-content: space-between;
     background: linear-gradient(to bottom, #FFFAF0, #FFF5E6);
     padding: 20px 24px;
     border: 2px solid #C9A66B;
@@ -222,6 +259,7 @@
     position: relative;
     box-shadow: 0 3px 12px rgba(62, 39, 35, 0.12), inset 0 0 0 1px rgba(212, 165, 116, 0.3);
     transition: all 0.2s ease;
+    gap: 16px;
 }
 
 .proverb-item::before {
@@ -238,6 +276,12 @@
 .proverb-item:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(62, 39, 35, 0.18), inset 0 0 0 1px rgba(212, 165, 116, 0.4);
+}
+
+.proverb-content {
+    display: flex;
+    align-items: flex-start;
+    flex: 1;
 }
 
 .proverb-bullet {
@@ -304,6 +348,10 @@
     box-shadow: 0 6px 20px rgba(62, 39, 35, 0.18), inset 0 0 0 1px rgba(139, 107, 71, 0.3);
 }
 
+.example-content {
+    flex: 1;
+}
+
 .example-text {
     font-size: 16px;
     color: #2C1810;
@@ -330,6 +378,43 @@
     content: '— ';
 }
 
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.action-btn {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1.5px solid #D4A574;
+    border-radius: 3px;
+    padding: 8px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    line-height: 1;
+}
+
+.action-btn:hover {
+    background: #FFF8E7;
+    border-color: #C9A66B;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(62, 39, 35, 0.15);
+}
+
+.action-btn:active {
+    transform: translateY(0);
+}
+
+.copy-btn {
+    color: #6B4F3A;
+}
+
+.share-btn {
+    color: #8B6B47;
+}
+
 @media only screen and (max-width: 600px) {
     .word-card-container {
         max-width: 95%;
@@ -351,6 +436,10 @@
 
     .word-title {
         font-size: 34px;
+    }
+
+    .favorite-button {
+        font-size: 28px;
     }
 
     .title-container {
@@ -428,5 +517,26 @@
 
     .examples-list {
         max-height: 300px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .action-btn {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+
+    .proverb-item,
+    .example-item {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .action-buttons {
+        flex-direction: row;
+        align-self: flex-end;
     }
 }

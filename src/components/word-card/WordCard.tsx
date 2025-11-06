@@ -1,8 +1,16 @@
 import React from 'react';
 import { Animated } from "react-animated-css";
 import { RouteComponentProps } from 'react-router-dom';
-import { getDefinition, getWordData } from '../../helpers/ApiHelper';
+import { getWordData } from '../../helpers/ApiHelper';
 import { WordDefinition, WordData } from '../../models/interfaces';
+import {
+    addToFavorites,
+    removeFromFavorites,
+    isFavorite,
+    addToHistory,
+    copyToClipboard,
+    shareContent
+} from '../../helpers/StorageHelper';
 import './WordCard.css';
 
 export interface OnboardingPageRouterProps {
@@ -15,6 +23,8 @@ export interface WordCardState {
     word: string;
     isVisible: boolean;
     wordData: WordData | null;
+    isFavorited: boolean;
+    copiedItem: string | null;
 }
 
 export class WordCard extends React.Component<WordCardProps, WordCardState> {
@@ -25,8 +35,34 @@ export class WordCard extends React.Component<WordCardProps, WordCardState> {
             definitions: [],
             word: "",
             isVisible: false,
-            wordData: null
+            wordData: null,
+            isFavorited: false,
+            copiedItem: null
         }
+    }
+
+    toggleFavorite = () => {
+        const { word, isFavorited } = this.state;
+        if (isFavorited) {
+            removeFromFavorites(word);
+        } else {
+            addToFavorites(word);
+        }
+        this.setState({ isFavorited: !isFavorited });
+    }
+
+    handleCopy = async (text: string, itemId: string) => {
+        const success = await copyToClipboard(text);
+        if (success) {
+            this.setState({ copiedItem: itemId });
+            setTimeout(() => {
+                this.setState({ copiedItem: null });
+            }, 2000);
+        }
+    }
+
+    handleShare = (text: string) => {
+        shareContent(text, window.location.href);
     }
 
     componentDidMount() {
@@ -49,11 +85,16 @@ export class WordCard extends React.Component<WordCardProps, WordCardState> {
                     const definitions = wordData.anlamlarListe.map(anlam => ({
                         text: anlam.anlam
                     }));
+                    // Add to search history
+                    addToHistory(word);
+                    // Check if favorited
+                    const favorited = isFavorite(word);
                     this.setState({
                         definitions: definitions,
                         word: word,
                         isVisible: true,
-                        wordData: wordData
+                        wordData: wordData,
+                        isFavorited: favorited
                     });
                 } else {
                     throw new Error('Word not found');
@@ -66,13 +107,22 @@ export class WordCard extends React.Component<WordCardProps, WordCardState> {
     }
 
     render() {
-        const { wordData } = this.state;
+        const { wordData, isFavorited } = this.state;
 
         return (this.state.isVisible &&
             <Animated className="word-card-container" animationIn="fadeIn" animationOut="fadeOut" animationInDuration={1000} isVisible={this.state.isVisible}>
                 <div className="inner-box">
                     <div className="title-container">
-                        <h3 className="word-title">{this.state.word}</h3>
+                        <div className="title-row">
+                            <h3 className="word-title">{this.state.word}</h3>
+                            <button
+                                className={`favorite-button ${isFavorited ? 'favorited' : ''}`}
+                                onClick={this.toggleFavorite}
+                                title={isFavorited ? 'Favorilerden çıkar' : 'Favorilere ekle'}
+                            >
+                                {isFavorited ? '★' : '☆'}
+                            </button>
+                        </div>
 
                         {/* Etymology Section */}
                         {wordData && wordData.lisan && (
@@ -125,8 +175,26 @@ export class WordCard extends React.Component<WordCardProps, WordCardState> {
                                 <div className="proverbs-list">
                                     {wordData.atasozu.map((proverb, i) => (
                                         <div className="proverb-item" key={i}>
-                                            <span className="proverb-bullet">•</span>
-                                            <span className="proverb-text">{proverb.madde}</span>
+                                            <div className="proverb-content">
+                                                <span className="proverb-bullet">•</span>
+                                                <span className="proverb-text">{proverb.madde}</span>
+                                            </div>
+                                            <div className="action-buttons">
+                                                <button
+                                                    className="action-btn copy-btn"
+                                                    onClick={() => this.handleCopy(proverb.madde, `proverb-${i}`)}
+                                                    title="Kopyala"
+                                                >
+                                                    {this.state.copiedItem === `proverb-${i}` ? '✓' : '📋'}
+                                                </button>
+                                                <button
+                                                    className="action-btn share-btn"
+                                                    onClick={() => this.handleShare(`"${proverb.madde}"\n\n— Türk Atasözü`)}
+                                                    title="Paylaş"
+                                                >
+                                                    📤
+                                                </button>
+                                            </div>
                                         </div>
                                     ))}
                                 </div>
@@ -140,14 +208,38 @@ export class WordCard extends React.Component<WordCardProps, WordCardState> {
                             <div className="section-container examples-section">
                                 <h4 className="section-title">Edebiyattan Örnekler</h4>
                                 <div className="examples-list">
-                                    {wordData.orneklerListe.map((example, i) => (
-                                        <div className="example-item" key={i}>
-                                            <p className="example-text">"{example.ornek}"</p>
-                                            {example.yazar && example.yazar.length > 0 && (
-                                                <p className="example-author">— {example.yazar[0].tam_adi}</p>
-                                            )}
-                                        </div>
-                                    ))}
+                                    {wordData.orneklerListe.map((example, i) => {
+                                        const authorName = example.yazar && example.yazar.length > 0
+                                            ? example.yazar[0].tam_adi
+                                            : '';
+                                        const fullQuote = `"${example.ornek}"\n\n— ${authorName}`;
+                                        return (
+                                            <div className="example-item" key={i}>
+                                                <div className="example-content">
+                                                    <p className="example-text">"{example.ornek}"</p>
+                                                    {authorName && (
+                                                        <p className="example-author">— {authorName}</p>
+                                                    )}
+                                                </div>
+                                                <div className="action-buttons">
+                                                    <button
+                                                        className="action-btn copy-btn"
+                                                        onClick={() => this.handleCopy(fullQuote, `example-${i}`)}
+                                                        title="Kopyala"
+                                                    >
+                                                        {this.state.copiedItem === `example-${i}` ? '✓' : '📋'}
+                                                    </button>
+                                                    <button
+                                                        className="action-btn share-btn"
+                                                        onClick={() => this.handleShare(fullQuote)}
+                                                        title="Paylaş"
+                                                    >
+                                                        📤
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
                                 </div>
                             </div>
                         </Animated>
