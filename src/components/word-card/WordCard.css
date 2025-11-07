@@ -1,561 +1,395 @@
-.word-card-container {
-    max-width: 750px;
-    width: 90%;
-    max-height: 85vh;
-    overflow-y: auto;
-    background: #FFF8E7;
-    display: flex;
-    padding: 56px 64px;
-    border: 3px solid #8B6B47;
-    border-radius: 2px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-    box-shadow: 0 8px 32px rgba(87, 62, 38, 0.15), inset 0 0 0 1px rgba(139, 107, 71, 0.2);
-    position: relative;
-}
+/*
+===========================================
+Word Card / Definition Page Styles
+===========================================
+*/
 
-.word-card-container::before {
-    content: '';
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
-    border: 1px solid rgba(139, 107, 71, 0.3);
-    pointer-events: none;
+/* Main Container */
+.word-card-container {
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #FFFFFF;
+  padding: 48px;
+  border: 2px solid #D4C5B0;
+  border-radius: 12px;
+  box-shadow: 0 8px 48px rgba(44, 36, 22, 0.16);
+  animation: fadeIn 0.4s ease;
 }
 
 .word-card-container::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
 }
 
 .word-card-container::-webkit-scrollbar-track {
-    background: #F5ECD7;
+  background: #F9F6F0;
 }
 
 .word-card-container::-webkit-scrollbar-thumb {
-    background: #A0826D;
-    border-radius: 4px;
+  background: #B89968;
+  border-radius: 4px;
 }
 
 .word-card-container::-webkit-scrollbar-thumb:hover {
-    background: #8B6B47;
+  background: #9C7D4D;
 }
 
+/* Inner Box */
 .inner-box {
-    width: 100%;
-    padding: 0;
-    text-align: left;
+  width: 100%;
 }
 
+/* Back Button */
 .back-to-home-button {
-    background: transparent;
-    border: 2px solid #8B6B47;
-    padding: 8px 16px;
-    font-size: 14px;
-    font-weight: 600;
-    color: #2C1810;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: all 0.2s ease;
-    margin-bottom: 20px;
+  background: #FDFBF7;
+  border: 2px solid #D4C5B0;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #5C5347;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  margin-bottom: 32px;
+  display: inline-block;
 }
 
 .back-to-home-button:hover {
-    background: #FFF0D1;
-    border-color: #6B4423;
-    transform: translateX(-2px);
+  background: #FFFFFF;
+  border-color: #B89968;
+  color: #2C2416;
+  transform: translateX(-4px);
 }
 
+/* Title Section */
 .title-container {
-    border-bottom: 2px solid #D4A574;
-    padding-bottom: 24px;
-    margin-bottom: 32px;
-    position: relative;
-}
-
-.title-container::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(to right, transparent, #D4A574 50%, transparent);
+  border-bottom: 2px solid #EDE7DC;
+  padding-bottom: 24px;
+  margin-bottom: 32px;
 }
 
 .title-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 16px;
 }
 
 .word-title {
-    font-size: 44px;
-    font-weight: 700;
-    margin: 0 0 18px 0;
-    color: #3E2723;
-    letter-spacing: 0.5px;
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    text-shadow: 0 1px 2px rgba(62, 39, 35, 0.1);
-    flex: 1;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0;
+  color: #2C2416;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  flex: 1;
 }
 
+/* Favorite Button */
 .favorite-button {
-    font-size: 32px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    color: #C9A66B;
-    transition: all 0.3s ease;
-    padding: 4px 8px;
-    line-height: 1;
-    margin-bottom: 18px;
+  font-size: 36px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #D4C5B0;
+  transition: all 0.3s ease;
+  padding: 8px;
+  line-height: 1;
+  flex-shrink: 0;
 }
 
 .favorite-button:hover {
-    color: #D4A574;
-    transform: scale(1.1);
+  color: #B89968;
+  transform: scale(1.1);
 }
 
 .favorite-button.favorited {
-    color: #D4A574;
-    animation: heartBeat 0.3s ease;
+  color: #B89968;
+  animation: heartBeat 0.3s ease;
 }
 
 @keyframes heartBeat {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
 }
 
-.etymology-badge {
-    display: inline-flex;
-    align-items: center;
-    background: #8B6B47;
-    color: #FFF8E7;
-    padding: 6px 14px;
-    border-radius: 3px;
-    font-size: 13px;
-    margin-right: 12px;
-    margin-top: 12px;
-    border: 1px solid #6B4F3A;
-    box-shadow: 0 2px 4px rgba(62, 39, 35, 0.15);
+/* Etymology Section */
+.etymology-section {
+  background: linear-gradient(135deg, #FDFBF7 0%, #F9F6F0 100%);
+  border: 2px solid #EDE7DC;
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
 }
 
-.etymology-icon {
-    margin-right: 6px;
-    font-size: 14px;
+.etymology-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #5C5347;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  display: block;
 }
 
 .etymology-text {
-    font-weight: 600;
+  font-size: 17px;
+  color: #2C2416;
+  font-weight: 500;
+  line-height: 1.6;
 }
 
-.pronunciation {
-    display: inline-flex;
-    align-items: center;
-    background: #A67C52;
-    color: #FFF8E7;
-    padding: 6px 14px;
-    border-radius: 3px;
-    font-size: 13px;
-    margin-top: 12px;
-    border: 1px solid #8B6B47;
-    box-shadow: 0 2px 4px rgba(62, 39, 35, 0.15);
-}
-
-.pronunciation-icon {
-    margin-right: 6px;
-    font-size: 14px;
-}
-
-.pronunciation-text {
-    font-weight: 600;
-}
-
-.definition-container {
-    display: flex;
-    width: 100%;
-    align-items: flex-start;
-    justify-content: flex-start;
-    margin: 18px 0;
-    color: #2C1810;
-    line-height: 1.9;
-}
-
-.definition-number {
-    font-size: 17px;
-    font-weight: 700;
-    margin-right: 14px;
-    min-width: 28px;
-    color: #6B4F3A;
-}
-
-.definition-text {
-    font-size: 17px;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    hyphens: auto;
-}
-
-/* Section Container Styles */
-.section-container {
-    margin-top: 40px;
-    padding-top: 28px;
-    border-top: 1px solid #D4A574;
-    position: relative;
-}
-
-.section-container::before {
-    content: '◆';
-    position: absolute;
-    top: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #FFF8E7;
-    padding: 0 12px;
-    color: #D4A574;
-    font-size: 12px;
+/* Meanings/Definitions Section */
+.meanings-section {
+  margin-bottom: 32px;
 }
 
 .section-title {
-    font-size: 12px;
-    font-weight: 700;
-    color: #6B4F3A;
-    margin: 0 0 20px 0;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #2C2416;
+  margin: 0 0 20px 0;
+  padding-left: 12px;
+  border-left: 4px solid #B89968;
 }
 
-/* Compound Words Section */
-.compound-words {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    line-height: 1.6;
+.definition-card {
+  background: #FDFBF7;
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  border-left: 4px solid #D4C5B0;
+  transition: all 0.2s ease;
 }
 
-.compound-word-tag {
-    background: #F5ECD7;
-    color: #3E2723;
-    padding: 8px 16px;
-    border: 1.5px solid #D4A574;
-    border-radius: 2px;
-    font-size: 15px;
-    font-style: italic;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    box-shadow: 0 1px 3px rgba(62, 39, 35, 0.1);
+.definition-card:hover {
+  border-left-color: #B89968;
+  box-shadow: 0 2px 12px rgba(44, 36, 22, 0.08);
 }
 
-.compound-word-tag:hover {
-    background: #EFE2C7;
-    border-color: #B8895B;
-    transform: translateY(-1px);
-    box-shadow: 0 3px 8px rgba(62, 39, 35, 0.15);
-    cursor: pointer;
+.definition-number {
+  font-weight: 700;
+  color: #B89968;
+  font-size: 18px;
+  margin-right: 12px;
 }
 
-/* Proverbs Section */
-.proverbs-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    max-height: 400px;
-    overflow-y: auto;
+.definition-text {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #2C2416;
+  display: inline;
 }
 
-.proverb-item {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    background: linear-gradient(to bottom, #FFFAF0, #FFF5E6);
-    padding: 20px 24px;
-    border: 2px solid #C9A66B;
-    border-radius: 2px;
-    position: relative;
-    box-shadow: 0 3px 12px rgba(62, 39, 35, 0.12), inset 0 0 0 1px rgba(212, 165, 116, 0.3);
-    transition: all 0.2s ease;
-    gap: 16px;
+/* Content Sections (Proverbs, Examples, Compounds) */
+.content-section {
+  margin-bottom: 32px;
 }
 
-.proverb-item::before {
-    content: '❝';
-    position: absolute;
-    top: -8px;
-    left: 16px;
-    font-size: 32px;
-    color: #C9A66B;
-    background: #FFFAF0;
-    padding: 0 8px;
+.proverbs-list,
+.examples-list,
+.compounds-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.proverb-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(62, 39, 35, 0.18), inset 0 0 0 1px rgba(212, 165, 116, 0.4);
+.proverb-item,
+.example-item,
+.compound-item {
+  background: #FFFFFF;
+  border: 2px solid #EDE7DC;
+  border-radius: 8px;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  transition: all 0.2s ease;
 }
 
+.proverb-item:hover,
+.example-item:hover,
+.compound-item:hover {
+  border-color: #D4C5B0;
+  box-shadow: 0 4px 16px rgba(44, 36, 22, 0.08);
+}
+
+/* Proverbs Specific */
 .proverb-content {
-    display: flex;
-    align-items: flex-start;
-    flex: 1;
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
 }
 
 .proverb-bullet {
-    color: #C9A66B;
-    font-size: 18px;
-    margin-right: 14px;
-    line-height: 1.9;
+  color: #B89968;
+  font-size: 20px;
+  font-weight: bold;
+  flex-shrink: 0;
+  line-height: 1.6;
 }
 
 .proverb-text {
-    font-size: 16px;
-    color: #2C1810;
-    font-style: italic;
-    line-height: 1.9;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #2C2416;
+  font-style: italic;
 }
 
-/* Literary Examples Section */
-.examples-list {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    max-height: 400px;
-    overflow-y: auto;
-}
-
-.example-item {
-    background: linear-gradient(to bottom, #FAF6F0, #F5ECD7);
-    padding: 24px 28px;
-    border: 2px solid #8B6B47;
-    border-radius: 2px;
-    position: relative;
-    box-shadow: 0 3px 12px rgba(62, 39, 35, 0.12), inset 0 0 0 1px rgba(139, 107, 71, 0.2);
-    transition: all 0.2s ease;
-}
-
-.example-item::before,
-.example-item::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border: 2px solid #C9A66B;
-}
-
-.example-item::before {
-    top: 8px;
-    left: 8px;
-    border-right: none;
-    border-bottom: none;
-}
-
-.example-item::after {
-    bottom: 8px;
-    right: 8px;
-    border-left: none;
-    border-top: none;
-}
-
-.example-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(62, 39, 35, 0.18), inset 0 0 0 1px rgba(139, 107, 71, 0.3);
-}
-
+/* Literary Examples Specific */
 .example-content {
-    flex: 1;
+  flex: 1;
 }
 
-.example-text {
-    font-size: 16px;
-    color: #2C1810;
-    font-style: italic;
-    line-height: 1.9;
-    margin: 0 0 16px 0;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    font-family: 'Cormorant Garamond', Georgia, serif;
+.example-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #2C2416;
+  font-style: italic;
+  margin-bottom: 12px;
+  padding-left: 16px;
+  border-left: 3px solid #D4C5B0;
 }
 
 .example-author {
-    font-size: 14px;
-    color: #6B4F3A;
-    font-weight: 700;
-    margin: 0;
-    text-align: right;
-    font-style: normal;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+  font-size: 14px;
+  color: #5C5347;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.example-author::before {
-    content: '— ';
+/* Compound Words Specific */
+.compound-word {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2C2416;
+  margin-bottom: 8px;
+}
+
+.compound-definition {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #5C5347;
 }
 
 /* Action Buttons */
 .action-buttons {
-    display: flex;
-    gap: 8px;
-    flex-shrink: 0;
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
 .action-btn {
-    background: rgba(255, 255, 255, 0.8);
-    border: 1.5px solid #D4A574;
-    border-radius: 3px;
-    padding: 8px 12px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    line-height: 1;
+  background: #FDFBF7;
+  border: 2px solid #D4C5B0;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .action-btn:hover {
-    background: #FFF8E7;
-    border-color: #C9A66B;
-    transform: translateY(-2px);
-    box-shadow: 0 3px 8px rgba(62, 39, 35, 0.15);
+  background: #FFFFFF;
+  border-color: #B89968;
+  transform: translateY(-2px);
 }
 
 .action-btn:active {
-    transform: translateY(0);
+  transform: translateY(0);
 }
 
-.copy-btn {
-    color: #6B4F3A;
+.copy-btn.copied {
+  background: #8B9A6C;
+  border-color: #8B9A6C;
+  color: #FFFFFF;
 }
 
-.share-btn {
-    color: #8B6B47;
+/* Empty State */
+.empty-section {
+  text-align: center;
+  padding: 48px 24px;
+  color: #8B7E6F;
+  font-size: 16px;
+  font-style: italic;
 }
 
-@media only screen and (max-width: 600px) {
-    .word-card-container {
-        max-width: 95%;
-        width: 95%;
-        padding: 36px 28px;
-        max-height: 90vh;
-    }
+/* Mobile Responsive */
+@media only screen and (max-width: 768px) {
+  .word-card-container {
+    padding: 32px 24px;
+    max-height: none;
+  }
 
-    .word-card-container::before {
-        top: 8px;
-        left: 8px;
-        right: 8px;
-        bottom: 8px;
-    }
+  .word-title {
+    font-size: 36px;
+  }
 
-    .inner-box {
-        padding: 0;
-    }
+  .favorite-button {
+    font-size: 32px;
+  }
 
-    .word-title {
-        font-size: 34px;
-    }
+  .section-title {
+    font-size: 24px;
+  }
 
-    .favorite-button {
-        font-size: 28px;
-    }
+  .proverb-item,
+  .example-item,
+  .compound-item {
+    flex-direction: column;
+    gap: 12px;
+  }
 
-    .title-container {
-        padding-bottom: 20px;
-        margin-bottom: 24px;
-    }
+  .action-buttons {
+    width: 100%;
+    justify-content: stretch;
+  }
 
-    .definition-container {
-        margin: 14px 0;
-    }
+  .action-btn {
+    flex: 1;
+  }
+}
 
-    .definition-text {
-        font-size: 16px;
-    }
+@media only screen and (max-width: 480px) {
+  .word-card-container {
+    padding: 24px 16px;
+  }
 
-    .definition-number {
-        font-size: 16px;
-    }
+  .back-to-home-button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
 
-    .etymology-badge,
-    .pronunciation {
-        font-size: 12px;
-        padding: 5px 12px;
-    }
+  .word-title {
+    font-size: 32px;
+  }
 
-    .section-title {
-        font-size: 11px;
-        letter-spacing: 1.5px;
-    }
+  .title-row {
+    gap: 12px;
+  }
 
-    .section-container {
-        margin-top: 32px;
-        padding-top: 24px;
-    }
+  .section-title {
+    font-size: 22px;
+  }
 
-    .compound-word-tag {
-        font-size: 14px;
-        padding: 7px 14px;
-    }
-
-    .proverb-item {
-        padding: 18px 20px;
-    }
-
-    .proverb-item::before {
-        font-size: 28px;
-        top: -6px;
-    }
-
-    .proverb-text {
-        font-size: 15px;
-    }
-
-    .proverbs-list {
-        max-height: 300px;
-    }
-
-    .example-item {
-        padding: 20px 22px;
-    }
-
-    .example-item::before,
-    .example-item::after {
-        width: 16px;
-        height: 16px;
-    }
-
-    .example-text {
-        font-size: 15px;
-    }
-
-    .example-author {
-        font-size: 13px;
-    }
-
-    .examples-list {
-        max-height: 300px;
-    }
-
-    .action-buttons {
-        flex-direction: column;
-        gap: 6px;
-    }
-
-    .action-btn {
-        font-size: 14px;
-        padding: 6px 10px;
-    }
-
-    .proverb-item,
-    .example-item {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .action-buttons {
-        flex-direction: row;
-        align-self: flex-end;
-    }
+  .definition-card,
+  .proverb-item,
+  .example-item,
+  .compound-item {
+    padding: 16px 20px;
+  }
 }
