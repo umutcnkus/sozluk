@@ -1,159 +1,97 @@
-/*
-===========================================
-SÖZLÜK - Home Page with Turkish Soul
-===========================================
-*/
-
+/* Search Page */
 .search-page {
   width: 100%;
-  max-width: 1400px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  animation: slideInBold 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  max-width: 1200px;
+  animation: fadeIn 0.4s ease;
 }
 
-/* Navigation - Bold Gold Button */
+/* Navigation */
 .navigation-bar {
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
 }
 
 .nav-button {
-  background: linear-gradient(135deg, #DAA520 0%, #B8860B 100%);
+  background: #C1694F;
   border: none;
-  color: #0A0908;
-  padding: 16px 32px;
-  font-size: 17px;
-  font-weight: 700;
-  border-radius: 0;
+  color: #FFFFFF;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow:
-    0 6px 20px rgba(218, 165, 32, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  position: relative;
-  overflow: hidden;
-}
-
-.nav-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transition: left 0.5s;
-}
-
-.nav-button:hover::before {
-  left: 100%;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(193, 105, 79, 0.2);
 }
 
 .nav-button:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow:
-    0 10px 30px rgba(218, 165, 32, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  background: #9A4F3A;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(193, 105, 79, 0.3);
 }
 
-/* Search Box - Bold & Dramatic */
+/* Search Box */
 .search-box-container {
   width: 100%;
-  max-width: 800px;
-  margin-bottom: 60px;
+  max-width: 700px;
+  margin: 0 auto 48px;
   position: relative;
 }
 
 .search-box {
   font-family: 'Cormorant Garamond', serif;
   width: 100%;
-  height: 90px;
-  font-size: 48px;
-  font-weight: 700;
-  background: linear-gradient(135deg, #1A1311 0%, #2A1F1D 100%);
-  color: #DAA520;
-  padding: 0 32px;
-  border: 3px solid #8B2222;
-  border-radius: 0;
-  transition: all 0.3s ease;
-  box-shadow:
-    0 8px 30px rgba(0, 0, 0, 0.5),
-    inset 0 2px 4px rgba(0, 0, 0, 0.3),
-    inset 0 -2px 4px rgba(218, 165, 32, 0.1);
+  height: 72px;
+  font-size: 42px;
+  font-weight: 600;
+  background: #FFFFFF;
+  color: #1A1614;
+  padding: 0 24px;
+  border: 2px solid #D4CEC7;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 12px rgba(26, 22, 20, 0.08);
 }
 
 .search-box::placeholder {
-  color: #B8860B;
-  opacity: 0.6;
+  color: #7A6F69;
 }
 
 .search-box:hover {
-  border-color: #A52A2A;
-  box-shadow:
-    0 12px 40px rgba(0, 0, 0, 0.6),
-    0 0 30px rgba(139, 34, 34, 0.2),
-    inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  border-color: #C1694F;
 }
 
 .search-box:focus {
   outline: none;
-  border-color: #DAA520;
-  box-shadow:
-    0 12px 40px rgba(0, 0, 0, 0.6),
-    0 0 40px rgba(218, 165, 32, 0.4),
-    inset 0 2px 4px rgba(0, 0, 0, 0.3),
-    inset 0 0 20px rgba(218, 165, 32, 0.1);
-  color: #FFD700;
+  border-color: #C1694F;
+  box-shadow: 0 4px 16px rgba(193, 105, 79, 0.15);
 }
 
-/* Autocomplete - Dark & Rich */
+/* Autocomplete */
 .autocomplete-dropdown {
   position: absolute;
-  top: calc(100% + 12px);
+  top: calc(100% + 8px);
   left: 0;
   right: 0;
-  background: #1A1311;
-  border: 3px solid #8B2222;
-  border-radius: 0;
-  max-height: 400px;
+  background: #FFFFFF;
+  border: 2px solid #D4CEC7;
+  border-radius: 8px;
+  max-height: 320px;
   overflow-y: auto;
-  box-shadow:
-    0 15px 50px rgba(0, 0, 0, 0.8),
-    0 0 30px rgba(139, 34, 34, 0.3);
+  box-shadow: 0 8px 24px rgba(26, 22, 20, 0.12);
   z-index: 1000;
-  animation: slideInBold 0.3s ease;
 }
 
 .autocomplete-item {
-  padding: 20px 32px;
-  font-size: 22px;
-  font-weight: 600;
-  color: #DAA520;
+  padding: 16px 24px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #1A1614;
   cursor: pointer;
-  transition: all 0.2s ease;
-  border-bottom: 1px solid #2A1F1D;
-  position: relative;
-}
-
-.autocomplete-item::before {
-  content: '▸';
-  position: absolute;
-  left: 12px;
-  opacity: 0;
-  transition: all 0.2s ease;
-  color: #8B2222;
-}
-
-.autocomplete-item:hover::before,
-.autocomplete-item.selected::before {
-  opacity: 1;
-  left: 16px;
+  transition: all 0.15s ease;
+  border-bottom: 1px solid #E8E3DD;
 }
 
 .autocomplete-item:last-child {
@@ -162,303 +100,194 @@ SÖZLÜK - Home Page with Turkish Soul
 
 .autocomplete-item:hover,
 .autocomplete-item.selected {
-  background: linear-gradient(90deg, #2A1F1D 0%, rgba(139, 34, 34, 0.3) 100%);
-  color: #FFD700;
-  padding-left: 40px;
+  background: #F5F1ED;
+  color: #C1694F;
 }
 
-/* Feature Cards - Bold Turkish Style */
+/* Feature Cards */
 .features-container {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 32px;
-  max-width: 1400px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
 }
 
-/* Card Base - Rich & Textured */
 .word-of-day-card,
 .recent-searches-card,
 .quote-of-day-card {
-  background:
-    linear-gradient(135deg, #1A1311 0%, #2A1F1D 100%);
-  border: 4px solid #8B2222;
-  border-radius: 0;
-  padding: 40px;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow:
-    0 10px 40px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 rgba(218, 165, 32, 0.1),
-    inset 0 -1px 0 rgba(139, 34, 34, 0.3);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Ottoman Pattern Decoration */
-.word-of-day-card::before,
-.recent-searches-card::before,
-.quote-of-day-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 120px;
-  height: 120px;
-  background:
-    radial-gradient(circle at 50% 50%, transparent 30%, rgba(139, 34, 34, 0.1) 30%, rgba(139, 34, 34, 0.1) 40%, transparent 40%),
-    radial-gradient(circle at 50% 50%, rgba(218, 165, 32, 0.05) 45%, transparent 45%);
-  opacity: 0.5;
-  pointer-events: none;
+  background: #FFFFFF;
+  border: 2px solid #D4CEC7;
+  border-radius: 8px;
+  padding: 32px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 12px rgba(26, 22, 20, 0.08);
 }
 
 .word-of-day-card:hover,
 .recent-searches-card:hover,
 .quote-of-day-card:hover {
-  border-color: #DAA520;
-  transform: translateY(-8px) scale(1.02);
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.8),
-    0 0 40px rgba(218, 165, 32, 0.3),
-    inset 0 1px 0 rgba(218, 165, 32, 0.2);
+  border-color: #C1694F;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(26, 22, 20, 0.12);
 }
 
-/* Card Icons - Bold */
-.card-icon {
-  font-size: 56px;
-  display: block;
-  margin-bottom: 20px;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
-}
-
-/* Card Titles - Ottoman Style */
+/* Card Titles - H3 (24px) */
 .card-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 700;
-  background: linear-gradient(135deg, #DAA520 0%, #FFD700 50%, #DAA520 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin: 0 0 28px 0;
-  letter-spacing: 1px;
+  color: #1A1614;
+  margin: 0 0 24px 0;
   text-transform: uppercase;
-  text-shadow: 0 2px 10px rgba(218, 165, 32, 0.3);
-  position: relative;
-  padding-bottom: 16px;
+  letter-spacing: 0.5px;
 }
 
-.card-title::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent 0%, #8B2222 50%, transparent 100%);
-}
-
-/* Word of the Day - Dramatic */
+/* Word of the Day - Display (56px) */
 .word-of-day-word {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 56px;
-  font-weight: 900;
-  background: linear-gradient(135deg, #FFD700 0%, #DAA520 50%, #B8860B 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: 48px;
+  font-weight: 700;
+  color: #C1694F;
   cursor: pointer;
-  padding: 32px;
-  background-color: rgba(139, 34, 34, 0.2);
-  border: 2px solid rgba(218, 165, 32, 0.3);
-  border-radius: 0;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  padding: 24px;
+  background: #F5F1ED;
+  border: 2px solid #E8E3DD;
+  border-radius: 6px;
+  transition: all 0.2s ease;
   text-align: center;
-  text-shadow: 0 4px 15px rgba(218, 165, 32, 0.4);
-  position: relative;
-}
-
-.word-of-day-word::before {
-  content: '◆';
-  position: absolute;
-  left: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 24px;
-  color: #8B2222;
-}
-
-.word-of-day-word::after {
-  content: '◆';
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 24px;
-  color: #8B2222;
 }
 
 .word-of-day-word:hover {
-  transform: scale(1.05);
-  border-color: #DAA520;
-  box-shadow:
-    0 0 40px rgba(218, 165, 32, 0.4),
-    inset 0 0 30px rgba(218, 165, 32, 0.1);
+  background: #E8E3DD;
+  border-color: #C1694F;
+  color: #9A4F3A;
 }
 
-/* Recent Searches - Clean List */
+/* Recent Searches */
 .recent-list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
 .recent-item {
-  font-size: 20px;
-  font-weight: 700;
-  color: #DAA520;
-  padding: 18px 24px;
-  background: rgba(139, 34, 34, 0.2);
-  border-left: 5px solid #8B2222;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1A1614;
+  padding: 16px 20px;
+  background: #F5F1ED;
+  border-left: 4px solid #C1694F;
+  border-radius: 4px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  position: relative;
-}
-
-.recent-item::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 0;
-  background: linear-gradient(90deg, rgba(218, 165, 32, 0.3), transparent);
-  transition: width 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .recent-item:hover {
-  padding-left: 36px;
-  border-left-color: #DAA520;
-  color: #FFD700;
+  background: #E8E3DD;
+  padding-left: 24px;
+  color: #C1694F;
 }
 
-.recent-item:hover::before {
-  width: 100%;
-}
-
-/* Quote of the Day - Luxurious */
+/* Quote of the Day */
 .quote-text {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 24px;
-  line-height: 1.8;
-  color: #E8D4A0;
+  font-size: 20px;
+  line-height: 1.7;
+  color: #1A1614;
   font-style: italic;
-  padding: 32px 40px;
-  background: rgba(139, 34, 34, 0.15);
-  border-left: 6px solid #DAA520;
-  margin-bottom: 20px;
-  position: relative;
-  min-height: 180px;
-  display: flex;
-  align-items: center;
-}
-
-.quote-text::before {
-  content: '"';
-  font-size: 120px;
-  color: rgba(218, 165, 32, 0.15);
-  position: absolute;
-  left: 20px;
-  top: -20px;
-  line-height: 1;
-  font-family: Georgia, serif;
-  font-weight: bold;
+  padding: 24px;
+  background: #F5F1ED;
+  border-left: 4px solid #C1694F;
+  border-radius: 4px;
+  margin-bottom: 16px;
 }
 
 .quote-attribution {
-  font-size: 15px;
-  color: #B8860B;
+  font-size: 14px;
+  color: #4A403A;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 24px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
   text-align: right;
 }
 
 .quote-actions {
   display: flex;
-  gap: 14px;
-  padding-top: 24px;
-  border-top: 1px solid rgba(139, 34, 34, 0.5);
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid #E8E3DD;
 }
 
 .quote-action-btn {
   flex: 1;
-  background: linear-gradient(135deg, rgba(139, 34, 34, 0.4) 0%, rgba(139, 34, 34, 0.2) 100%);
-  border: 2px solid #8B2222;
-  color: #DAA520;
-  padding: 14px 20px;
-  font-size: 15px;
-  font-weight: 700;
-  border-radius: 0;
+  background: #F5F1ED;
+  border: 2px solid #D4CEC7;
+  color: #4A403A;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.2s ease;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .quote-action-btn:hover {
-  background: linear-gradient(135deg, rgba(139, 34, 34, 0.6) 0%, rgba(139, 34, 34, 0.4) 100%);
-  border-color: #DAA520;
-  color: #FFD700;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  background: #FFFFFF;
+  border-color: #C1694F;
+  color: #1A1614;
+  transform: translateY(-2px);
 }
 
 .quote-action-btn.primary {
-  background: linear-gradient(135deg, #DAA520 0%, #B8860B 100%);
-  border-color: #DAA520;
-  color: #0A0908;
-  font-weight: 800;
+  background: #C1694F;
+  border-color: #C1694F;
+  color: #FFFFFF;
 }
 
 .quote-action-btn.primary:hover {
-  background: linear-gradient(135deg, #FFD700 0%, #DAA520 100%);
-  box-shadow:
-    0 8px 20px rgba(218, 165, 32, 0.4),
-    0 0 30px rgba(218, 165, 32, 0.2);
+  background: #9A4F3A;
+  border-color: #9A4F3A;
 }
 
-/* Mobile Responsive */
+/* Mobile */
 @media only screen and (max-width: 768px) {
+  .navigation-bar {
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
   .search-box {
-    font-size: 36px;
-    height: 75px;
-    padding: 0 24px;
+    font-size: 32px;
+    height: 64px;
+    padding: 0 20px;
   }
 
   .features-container {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
   }
 
   .word-of-day-card,
   .recent-searches-card,
   .quote-of-day-card {
-    padding: 32px;
-  }
-
-  .card-title {
-    font-size: 28px;
-  }
-
-  .word-of-day-word {
-    font-size: 44px;
     padding: 24px;
   }
 
-  .quote-text {
+  .card-title {
     font-size: 20px;
-    padding: 24px 32px;
+  }
+
+  .word-of-day-word {
+    font-size: 36px;
+    padding: 20px;
+  }
+
+  .quote-text {
+    font-size: 18px;
+    padding: 20px;
   }
 
   .quote-actions {
@@ -469,15 +298,15 @@ SÖZLÜK - Home Page with Turkish Soul
 @media only screen and (max-width: 480px) {
   .search-box {
     font-size: 28px;
-    height: 65px;
-    padding: 0 20px;
+    height: 56px;
+    padding: 0 16px;
   }
 
   .word-of-day-word {
-    font-size: 36px;
+    font-size: 32px;
   }
 
   .card-title {
-    font-size: 24px;
+    font-size: 18px;
   }
 }

@@ -1,39 +1,15 @@
-/*
-===========================================
-SÖZLÜK - Word Definition Page
-Ottoman-Inspired Bold Design
-===========================================
-*/
-
-/* Main Container - Like Opening an Ancient Manuscript */
+/* Word Card Container */
 .word-card-container {
-  max-width: 950px;
+  max-width: 900px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
-  background: linear-gradient(135deg, #1A1311 0%, #2A1F1D 100%);
-  padding: 56px;
-  border: 5px solid #8B2222;
-  border-radius: 0;
-  box-shadow:
-    0 15px 60px rgba(0, 0, 0, 0.8),
-    0 0 50px rgba(139, 34, 34, 0.3),
-    inset 0 2px 4px rgba(0, 0, 0, 0.4),
-    inset 0 -2px 4px rgba(218, 165, 32, 0.1);
-  animation: slideInBold 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-  position: relative;
-}
-
-/* Ottoman Pattern Border */
-.word-card-container::before {
-  content: '';
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  right: 16px;
-  bottom: 16px;
-  border: 2px solid rgba(218, 165, 32, 0.2);
-  pointer-events: none;
+  background: #FFFFFF;
+  padding: 48px;
+  border: 2px solid #D4CEC7;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(26, 22, 20, 0.12);
+  animation: fadeIn 0.4s ease;
 }
 
 .word-card-container::-webkit-scrollbar {
@@ -41,64 +17,50 @@ Ottoman-Inspired Bold Design
 }
 
 .word-card-container::-webkit-scrollbar-track {
-  background: #1A1311;
-  border-left: 2px solid #8B2222;
+  background: #F5F1ED;
 }
 
 .word-card-container::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #DAA520 0%, #B8860B 100%);
-  border: 2px solid #1A1311;
+  background: #C1694F;
+  border-radius: 6px;
 }
 
 .word-card-container::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #FFD700 0%, #DAA520 100%);
+  background: #9A4F3A;
 }
 
-/* Inner Box */
 .inner-box {
   width: 100%;
 }
 
-/* Back Button - Bold Gold */
+/* Back Button */
 .back-to-home-button {
-  background: linear-gradient(135deg, rgba(139, 34, 34, 0.4) 0%, rgba(139, 34, 34, 0.2) 100%);
-  border: 2px solid #8B2222;
-  padding: 12px 24px;
-  font-size: 16px;
-  font-weight: 700;
-  color: #DAA520;
+  background: #F5F1ED;
+  border: 2px solid #D4CEC7;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4A403A;
   cursor: pointer;
-  border-radius: 0;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  margin-bottom: 40px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  margin-bottom: 32px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 .back-to-home-button:hover {
-  background: linear-gradient(135deg, rgba(139, 34, 34, 0.6) 0%, rgba(139, 34, 34, 0.4) 100%);
-  border-color: #DAA520;
-  color: #FFD700;
-  transform: translateX(-6px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  background: #FFFFFF;
+  border-color: #C1694F;
+  color: #1A1614;
+  transform: translateX(-4px);
 }
 
-/* Title Section - Grand & Dramatic */
+/* Title Section */
 .title-container {
-  border-bottom: 3px solid #8B2222;
-  padding-bottom: 32px;
-  margin-bottom: 40px;
-  position: relative;
-}
-
-.title-container::after {
-  content: '';
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 40%;
-  height: 3px;
-  background: linear-gradient(90deg, #DAA520 0%, transparent 100%);
+  border-bottom: 2px solid #E8E3DD;
+  padding-bottom: 24px;
+  margin-bottom: 32px;
 }
 
 .title-row {
@@ -106,132 +68,123 @@ Ottoman-Inspired Bold Design
   align-items: flex-start;
   justify-content: space-between;
   gap: 24px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
+/* Word Title - Display (56px) */
 .word-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 64px;
-  font-weight: 900;
+  font-size: 56px;
+  font-weight: 700;
   margin: 0;
-  background: linear-gradient(135deg, #FFD700 0%, #DAA520 50%, #B8860B 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: -1px;
+  color: #1A1614;
+  letter-spacing: -0.5px;
   line-height: 1.1;
   flex: 1;
-  text-shadow: 0 6px 20px rgba(218, 165, 32, 0.4);
 }
 
-/* Favorite Button - Dramatic Star */
+/* Favorite Button */
 .favorite-button {
-  font-size: 48px;
+  font-size: 36px;
   background: transparent;
   border: none;
   cursor: pointer;
-  color: rgba(218, 165, 32, 0.3);
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  color: #D4CEC7;
+  transition: all 0.3s ease;
   padding: 0;
   line-height: 1;
   flex-shrink: 0;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
 }
 
 .favorite-button:hover {
-  color: #DAA520;
-  transform: scale(1.2) rotate(15deg);
+  color: #C1694F;
+  transform: scale(1.1);
 }
 
 .favorite-button.favorited {
-  color: #FFD700;
-  animation: heartBeatBold 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  color: #C1694F;
 }
 
-@keyframes heartBeatBold {
-  0%, 100% { transform: scale(1) rotate(0deg); }
-  25% { transform: scale(1.3) rotate(-10deg); }
-  50% { transform: scale(1.1) rotate(5deg); }
-  75% { transform: scale(1.25) rotate(-5deg); }
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
 }
 
-/* Etymology - Luxurious Box */
+.favorite-button.favorited {
+  animation: heartBeat 0.3s ease;
+}
+
+/* Etymology */
 .etymology-section {
-  background: rgba(139, 34, 34, 0.2);
-  border: 2px solid rgba(218, 165, 32, 0.3);
-  border-left: 5px solid #DAA520;
-  padding: 24px 32px;
-  margin-bottom: 20px;
+  background: #F5F1ED;
+  border: 2px solid #E8E3DD;
+  border-left: 4px solid #C1694F;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  border-radius: 6px;
 }
 
 .etymology-label {
-  font-size: 13px;
-  font-weight: 800;
-  color: #B8860B;
+  font-size: 12px;
+  font-weight: 700;
+  color: #4A403A;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
   display: block;
 }
 
 .etymology-text {
-  font-size: 19px;
-  color: #E8D4A0;
-  font-weight: 600;
-  line-height: 1.7;
+  font-size: 18px;
+  color: #1A1614;
+  font-weight: 500;
+  line-height: 1.6;
 }
 
-/* Section Titles - Bold Gold Gradient */
+/* Sections */
 .meanings-section,
 .content-section {
-  margin-bottom: 40px;
+  margin-bottom: 32px;
 }
 
+/* Section Titles - H2 (32px) */
 .section-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: 32px;
-  font-weight: 800;
-  background: linear-gradient(135deg, #DAA520 0%, #FFD700 50%, #DAA520 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-weight: 700;
+  color: #1A1614;
   margin: 0 0 24px 0;
-  padding-left: 20px;
-  border-left: 6px solid #8B2222;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  padding-left: 16px;
+  border-left: 4px solid #C1694F;
 }
 
-/* Definition Cards - Rich & Elevated */
+/* Definition Cards */
 .definition-card {
-  background: rgba(139, 34, 34, 0.15);
-  border-radius: 0;
-  padding: 24px 32px;
-  margin-bottom: 18px;
-  border-left: 5px solid #8B2222;
-  transition: all 0.3s ease;
+  background: #F5F1ED;
+  border-radius: 6px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  border-left: 4px solid #E8E3DD;
+  transition: all 0.2s ease;
 }
 
 .definition-card:hover {
-  border-left-color: #DAA520;
-  background: rgba(139, 34, 34, 0.25);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-  transform: translateX(4px);
+  border-left-color: #C1694F;
+  box-shadow: 0 2px 12px rgba(26, 22, 20, 0.08);
 }
 
 .definition-number {
-  font-weight: 900;
-  color: #DAA520;
-  font-size: 22px;
-  margin-right: 16px;
+  font-weight: 700;
+  color: #C1694F;
+  font-size: 18px;
+  margin-right: 12px;
 }
 
 .definition-text {
-  font-size: 19px;
-  line-height: 1.8;
-  color: #E8D4A0;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #1A1614;
   display: inline;
-  font-weight: 500;
 }
 
 /* Content Lists */
@@ -240,44 +193,42 @@ Ottoman-Inspired Bold Design
 .compounds-list {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
-/* Content Items - Elegant Cards */
+/* Content Items */
 .proverb-item,
 .example-item,
 .compound-item {
-  background: rgba(26, 19, 17, 0.5);
-  border: 3px solid rgba(139, 34, 34, 0.5);
-  border-radius: 0;
-  padding: 28px 32px;
+  background: #FFFFFF;
+  border: 2px solid #E8E3DD;
+  border-radius: 6px;
+  padding: 24px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 20px;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  gap: 16px;
+  transition: all 0.2s ease;
 }
 
 .proverb-item:hover,
 .example-item:hover,
 .compound-item:hover {
-  border-color: #DAA520;
-  background: rgba(139, 34, 34, 0.2);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-  transform: translateY(-4px);
+  border-color: #C1694F;
+  box-shadow: 0 4px 16px rgba(26, 22, 20, 0.08);
 }
 
-/* Proverbs - Italic & Elegant */
+/* Proverbs */
 .proverb-content {
   flex: 1;
   display: flex;
   align-items: flex-start;
-  gap: 16px;
+  gap: 12px;
 }
 
 .proverb-bullet {
-  color: #DAA520;
-  font-size: 28px;
+  color: #C1694F;
+  font-size: 24px;
   font-weight: bold;
   flex-shrink: 0;
   line-height: 1.6;
@@ -285,9 +236,9 @@ Ottoman-Inspired Bold Design
 
 .proverb-text {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 21px;
+  font-size: 20px;
   line-height: 1.7;
-  color: #E8D4A0;
+  color: #1A1614;
   font-style: italic;
   font-weight: 500;
 }
@@ -299,83 +250,81 @@ Ottoman-Inspired Bold Design
 
 .example-quote {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 21px;
-  line-height: 1.8;
-  color: #E8D4A0;
+  font-size: 20px;
+  line-height: 1.7;
+  color: #1A1614;
   font-style: italic;
-  margin-bottom: 16px;
-  padding-left: 24px;
-  border-left: 4px solid #DAA520;
+  margin-bottom: 12px;
+  padding-left: 20px;
+  border-left: 4px solid #C1694F;
   font-weight: 500;
 }
 
 .example-author {
-  font-size: 15px;
-  color: #B8860B;
-  font-weight: 800;
+  font-size: 14px;
+  color: #4A403A;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
 }
 
 /* Compound Words */
 .compound-word {
-  font-size: 21px;
-  font-weight: 800;
-  color: #DAA520;
-  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1A1614;
+  margin-bottom: 8px;
 }
 
 .compound-definition {
   font-size: 18px;
-  line-height: 1.7;
-  color: #C9AB81;
-  font-weight: 500;
+  line-height: 1.6;
+  color: #4A403A;
 }
 
-/* Action Buttons - Bold & Confident */
+/* Action Buttons */
 .action-buttons {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   flex-shrink: 0;
 }
 
 .action-btn {
-  background: linear-gradient(135deg, rgba(139, 34, 34, 0.4) 0%, rgba(139, 34, 34, 0.2) 100%);
-  border: 2px solid #8B2222;
-  border-radius: 0;
-  padding: 12px 16px;
-  font-size: 18px;
+  background: #F5F1ED;
+  border: 2px solid #D4CEC7;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 16px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  min-width: 50px;
-  color: #DAA520;
+  transition: all 0.2s ease;
+  min-width: 44px;
+  color: #4A403A;
 }
 
 .action-btn:hover {
-  background: linear-gradient(135deg, rgba(139, 34, 34, 0.6) 0%, rgba(139, 34, 34, 0.4) 100%);
-  border-color: #DAA520;
-  transform: translateY(-4px) scale(1.1);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  background: #FFFFFF;
+  border-color: #C1694F;
+  transform: translateY(-2px);
 }
 
 .copy-btn.copied {
-  background: linear-gradient(135deg, #2D5016 0%, #1C3D0A 100%);
-  border-color: #4A7C2B;
-  color: #A8D96E;
+  background: #6B8E4E;
+  border-color: #6B8E4E;
+  color: #FFFFFF;
 }
 
-/* Mobile Responsive */
+/* Mobile */
 @media only screen and (max-width: 768px) {
   .word-card-container {
-    padding: 40px 32px;
+    padding: 32px 24px;
   }
 
   .word-title {
-    font-size: 48px;
+    font-size: 42px;
   }
 
   .favorite-button {
-    font-size: 40px;
+    font-size: 32px;
   }
 
   .section-title {
@@ -386,7 +335,7 @@ Ottoman-Inspired Bold Design
   .example-item,
   .compound-item {
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
   }
 
   .action-buttons {
@@ -400,14 +349,10 @@ Ottoman-Inspired Bold Design
 
 @media only screen and (max-width: 480px) {
   .word-card-container {
-    padding: 32px 24px;
+    padding: 24px 16px;
   }
 
   .word-title {
-    font-size: 40px;
-  }
-
-  .favorite-button {
     font-size: 36px;
   }
 

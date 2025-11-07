@@ -291,7 +291,6 @@ export class Search extends React.Component<SearchProps, SearchState> {
                     <div className="features-container">
                         {wordOfTheDay && (
                             <div className="word-of-day-card">
-                                <span className="card-icon">📖</span>
                                 <h3 className="card-title">Günün Kelimesi</h3>
                                 <div
                                     className="word-of-day-word"
@@ -304,7 +303,6 @@ export class Search extends React.Component<SearchProps, SearchState> {
 
                         {quoteOfDay && (
                             <div className="quote-of-day-card">
-                                <span className="card-icon">✨</span>
                                 <h3 className="card-title">Günün Sözü</h3>
                                 <div className="quote-text">
                                     {quoteOfDay.text}
@@ -317,19 +315,19 @@ export class Search extends React.Component<SearchProps, SearchState> {
                                         className="quote-action-btn"
                                         onClick={this.handleCopyQuote}
                                     >
-                                        📋 Kopyala
+                                        Kopyala
                                     </button>
                                     <button
                                         className="quote-action-btn"
                                         onClick={this.handleShareQuote}
                                     >
-                                        📤 Paylaş
+                                        Paylaş
                                     </button>
                                     <button
                                         className="quote-action-btn primary"
                                         onClick={this.handleDownloadQuote}
                                     >
-                                        📥 İndir
+                                        İndir
                                     </button>
                                 </div>
                             </div>
@@ -337,7 +335,6 @@ export class Search extends React.Component<SearchProps, SearchState> {
 
                         {recentSearches.length > 0 && (
                             <div className="recent-searches-card">
-                                <span className="card-icon">🕐</span>
                                 <h3 className="card-title">Son Aramalar</h3>
                                 <div className="recent-list">
                                     {recentSearches.map((item, index) => (

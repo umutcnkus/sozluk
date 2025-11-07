@@ -1,19 +1,39 @@
 /*
 ===========================================
-SÖZLÜK - Bold Turkish Dictionary Design
+SÖZLÜK Design System
+Turkish-inspired with clear hierarchy
 ===========================================
 
-Inspired by:
-- Turkish coffee & baklava
-- Ottoman geometric patterns
-- Iznik ceramics
-- Turkish carpets & textiles
-- Calligraphy and manuscripts
+Color Palette:
+- Primary Dark: #1A1614 (deep warm brown)
+- Primary: #2B2520 (warm brown)
+- Surface: #F5F1ED (warm off-white)
+- Surface Dark: #E8E3DD (warm gray)
+- Accent: #C1694F (terracotta)
+- Accent Dark: #9A4F3A (burnt terracotta)
+- Text Primary: #1A1614 (deep brown)
+- Text Secondary: #4A403A (medium brown)
+- Text Tertiary: #7A6F69 (light brown)
+- Border: #D4CEC7 (warm gray)
+- Success: #6B8E4E (olive green)
 
-NOT inspired by:
-- Generic web apps
-- Minimal boring designs
-- AI-generated sameness
+Typography Scale:
+- Display: 56px (page titles)
+- H1: 42px (card titles)
+- H2: 32px (section headers)
+- H3: 24px (subsections)
+- Body Large: 20px
+- Body: 18px
+- Body Small: 16px
+- Caption: 14px
+
+Spacing (8px base):
+- xs: 8px
+- sm: 16px
+- md: 24px
+- lg: 32px
+- xl: 48px
+- 2xl: 64px
 */
 
 * {
@@ -26,8 +46,8 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #0A0908;
-  color: #1A1311;
+  background: #F5F1ED;
+  color: #1A1614;
 }
 
 .App {
@@ -37,70 +57,49 @@ body {
   align-items: flex-start;
   justify-content: center;
   padding: 32px;
-  background:
-    linear-gradient(135deg, rgba(139, 34, 34, 0.05) 0%, rgba(218, 165, 32, 0.05) 100%),
-    radial-gradient(circle at 20% 50%, rgba(184, 134, 11, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(139, 34, 34, 0.03) 0%, transparent 50%),
-    #0A0908;
-  background-attachment: fixed;
+  background: linear-gradient(135deg, #F5F1ED 0%, #E8E3DD 100%);
 }
 
-/* Scrollbar - Turkish Coffee Theme */
 ::-webkit-scrollbar {
-  width: 14px;
-  height: 14px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1A1311;
-  border-left: 2px solid #8B2222;
+  background: #E8E3DD;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #DAA520 0%, #B8860B 100%);
-  border: 2px solid #1A1311;
-  border-radius: 0;
+  background: #C1694F;
+  border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #FFD700 0%, #DAA520 100%);
+  background: #9A4F3A;
 }
 
-/* Focus States - Gold */
 *:focus {
-  outline: 3px solid #DAA520;
-  outline-offset: 3px;
+  outline: 2px solid #C1694F;
+  outline-offset: 2px;
 }
 
 *:focus:not(:focus-visible) {
   outline: none;
 }
 
-/* Animations */
-@keyframes slideInBold {
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px) scale(0.95);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: -1000px 0;
-  }
-  100% {
-    background-position: 1000px 0;
-  }
-}
-
-/* Mobile */
 @media only screen and (max-width: 768px) {
   .App {
-    padding: 20px;
+    padding: 24px;
   }
 }
 
