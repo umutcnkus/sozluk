@@ -1,113 +1,159 @@
 /*
 ===========================================
-Search / Home Page Styles
+SÖZLÜK - Home Page with Turkish Soul
 ===========================================
 */
 
 .search-page {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  animation: fadeIn 0.4s ease;
+  animation: slideInBold 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Navigation */
+/* Navigation - Bold Gold Button */
 .navigation-bar {
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 32px;
+  margin-bottom: 40px;
 }
 
 .nav-button {
-  background: #FFFFFF;
-  border: 2px solid #D4C5B0;
-  color: #2C2416;
-  padding: 12px 24px;
-  font-size: 16px;
-  font-weight: 600;
-  border-radius: 12px;
+  background: linear-gradient(135deg, #DAA520 0%, #B8860B 100%);
+  border: none;
+  color: #0A0908;
+  padding: 16px 32px;
+  font-size: 17px;
+  font-weight: 700;
+  border-radius: 0;
   cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 8px rgba(44, 36, 22, 0.06);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow:
+    0 6px 20px rgba(218, 165, 32, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.nav-button:hover::before {
+  left: 100%;
 }
 
 .nav-button:hover {
-  background: #FDFBF7;
-  border-color: #B89968;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(44, 36, 22, 0.12);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow:
+    0 10px 30px rgba(218, 165, 32, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
-.nav-button:active {
-  transform: translateY(0);
-}
-
-/* Search Box */
+/* Search Box - Bold & Dramatic */
 .search-box-container {
   width: 100%;
-  max-width: 700px;
-  margin-bottom: 48px;
+  max-width: 800px;
+  margin-bottom: 60px;
   position: relative;
 }
 
 .search-box {
   font-family: 'Cormorant Garamond', serif;
   width: 100%;
-  height: 72px;
-  font-size: 36px;
-  font-weight: 500;
-  background: #FFFFFF;
-  color: #2C2416;
-  padding: 20px 24px;
-  border: 2px solid #D4C5B0;
-  border-radius: 12px;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 16px rgba(44, 36, 22, 0.08);
+  height: 90px;
+  font-size: 48px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #1A1311 0%, #2A1F1D 100%);
+  color: #DAA520;
+  padding: 0 32px;
+  border: 3px solid #8B2222;
+  border-radius: 0;
+  transition: all 0.3s ease;
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.5),
+    inset 0 2px 4px rgba(0, 0, 0, 0.3),
+    inset 0 -2px 4px rgba(218, 165, 32, 0.1);
 }
 
 .search-box::placeholder {
-  color: #8B7E6F;
-  opacity: 1;
+  color: #B8860B;
+  opacity: 0.6;
 }
 
 .search-box:hover {
-  border-color: #B89968;
+  border-color: #A52A2A;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(139, 34, 34, 0.2),
+    inset 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.search-box:focus,
-.search-box:active {
+.search-box:focus {
   outline: none;
-  border-color: #B89968;
-  box-shadow: 0 4px 24px rgba(44, 36, 22, 0.12), 0 0 0 4px rgba(184, 153, 104, 0.1);
+  border-color: #DAA520;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.6),
+    0 0 40px rgba(218, 165, 32, 0.4),
+    inset 0 2px 4px rgba(0, 0, 0, 0.3),
+    inset 0 0 20px rgba(218, 165, 32, 0.1);
+  color: #FFD700;
 }
 
-/* Autocomplete */
+/* Autocomplete - Dark & Rich */
 .autocomplete-dropdown {
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + 12px);
   left: 0;
   right: 0;
-  background: #FFFFFF;
-  border: 2px solid #D4C5B0;
-  border-radius: 12px;
-  max-height: 320px;
+  background: #1A1311;
+  border: 3px solid #8B2222;
+  border-radius: 0;
+  max-height: 400px;
   overflow-y: auto;
-  box-shadow: 0 8px 32px rgba(44, 36, 22, 0.16);
+  box-shadow:
+    0 15px 50px rgba(0, 0, 0, 0.8),
+    0 0 30px rgba(139, 34, 34, 0.3);
   z-index: 1000;
-  animation: fadeIn 0.2s ease;
+  animation: slideInBold 0.3s ease;
 }
 
 .autocomplete-item {
-  padding: 16px 24px;
-  font-size: 18px;
-  font-weight: 500;
-  color: #2C2416;
+  padding: 20px 32px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #DAA520;
   cursor: pointer;
-  transition: all 0.15s ease;
-  border-bottom: 1px solid #EDE7DC;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid #2A1F1D;
+  position: relative;
+}
+
+.autocomplete-item::before {
+  content: '▸';
+  position: absolute;
+  left: 12px;
+  opacity: 0;
+  transition: all 0.2s ease;
+  color: #8B2222;
+}
+
+.autocomplete-item:hover::before,
+.autocomplete-item.selected::before {
+  opacity: 1;
+  left: 16px;
 }
 
 .autocomplete-item:last-child {
@@ -116,261 +162,322 @@ Search / Home Page Styles
 
 .autocomplete-item:hover,
 .autocomplete-item.selected {
-  background: #FDFBF7;
-  color: #B89968;
-  padding-left: 32px;
+  background: linear-gradient(90deg, #2A1F1D 0%, rgba(139, 34, 34, 0.3) 100%);
+  color: #FFD700;
+  padding-left: 40px;
 }
 
-.autocomplete-empty {
-  padding: 24px;
-  text-align: center;
-  color: #8B7E6F;
-  font-size: 16px;
-  font-style: italic;
-}
-
-/* Feature Cards Container */
+/* Feature Cards - Bold Turkish Style */
 .features-container {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 24px;
-  max-width: 1200px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 32px;
+  max-width: 1400px;
 }
 
-/* Base Card Styles */
+/* Card Base - Rich & Textured */
 .word-of-day-card,
 .recent-searches-card,
 .quote-of-day-card {
-  background: #FFFFFF;
-  border: 2px solid #D4C5B0;
-  border-radius: 12px;
-  padding: 32px;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 16px rgba(44, 36, 22, 0.08);
-  animation: fadeIn 0.5s ease;
-  display: flex;
-  flex-direction: column;
+  background:
+    linear-gradient(135deg, #1A1311 0%, #2A1F1D 100%);
+  border: 4px solid #8B2222;
+  border-radius: 0;
+  padding: 40px;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(218, 165, 32, 0.1),
+    inset 0 -1px 0 rgba(139, 34, 34, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ottoman Pattern Decoration */
+.word-of-day-card::before,
+.recent-searches-card::before,
+.quote-of-day-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 120px;
+  height: 120px;
+  background:
+    radial-gradient(circle at 50% 50%, transparent 30%, rgba(139, 34, 34, 0.1) 30%, rgba(139, 34, 34, 0.1) 40%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(218, 165, 32, 0.05) 45%, transparent 45%);
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .word-of-day-card:hover,
 .recent-searches-card:hover,
 .quote-of-day-card:hover {
-  border-color: #B89968;
-  transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(44, 36, 22, 0.16);
+  border-color: #DAA520;
+  transform: translateY(-8px) scale(1.02);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.8),
+    0 0 40px rgba(218, 165, 32, 0.3),
+    inset 0 1px 0 rgba(218, 165, 32, 0.2);
 }
 
-/* Card Header */
+/* Card Icons - Bold */
 .card-icon {
-  font-size: 40px;
+  font-size: 56px;
   display: block;
-  margin-bottom: 16px;
-  line-height: 1;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
 }
 
+/* Card Titles - Ottoman Style */
 .card-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 700;
-  color: #2C2416;
-  margin: 0 0 24px 0;
-  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #DAA520 0%, #FFD700 50%, #DAA520 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 28px 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 0 2px 10px rgba(218, 165, 32, 0.3);
+  position: relative;
+  padding-bottom: 16px;
 }
 
-/* Word of the Day */
+.card-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, #8B2222 50%, transparent 100%);
+}
+
+/* Word of the Day - Dramatic */
 .word-of-day-word {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 42px;
-  font-weight: 700;
-  color: #2C2416;
+  font-size: 56px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #FFD700 0%, #DAA520 50%, #B8860B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   cursor: pointer;
-  padding: 24px;
-  background: linear-gradient(135deg, #FDFBF7 0%, #F9F6F0 100%);
-  border: 2px solid #EDE7DC;
-  border-radius: 8px;
-  transition: all 0.2s ease;
+  padding: 32px;
+  background-color: rgba(139, 34, 34, 0.2);
+  border: 2px solid rgba(218, 165, 32, 0.3);
+  border-radius: 0;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   text-align: center;
-  line-height: 1.2;
+  text-shadow: 0 4px 15px rgba(218, 165, 32, 0.4);
+  position: relative;
+}
+
+.word-of-day-word::before {
+  content: '◆';
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  color: #8B2222;
+}
+
+.word-of-day-word::after {
+  content: '◆';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  color: #8B2222;
 }
 
 .word-of-day-word:hover {
-  background: linear-gradient(135deg, #F9F6F0 0%, #EDE7DC 100%);
-  border-color: #B89968;
-  color: #B89968;
-  transform: scale(1.02);
+  transform: scale(1.05);
+  border-color: #DAA520;
+  box-shadow:
+    0 0 40px rgba(218, 165, 32, 0.4),
+    inset 0 0 30px rgba(218, 165, 32, 0.1);
 }
 
-/* Recent Searches */
+/* Recent Searches - Clean List */
 .recent-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
 .recent-item {
-  font-size: 18px;
-  font-weight: 600;
-  color: #2C2416;
-  padding: 16px 20px;
-  background: #FDFBF7;
-  border-left: 4px solid #B89968;
-  border-radius: 6px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #DAA520;
+  padding: 18px 24px;
+  background: rgba(139, 34, 34, 0.2);
+  border-left: 5px solid #8B2222;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+}
+
+.recent-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  background: linear-gradient(90deg, rgba(218, 165, 32, 0.3), transparent);
+  transition: width 0.3s ease;
 }
 
 .recent-item:hover {
-  background: #F9F6F0;
-  padding-left: 28px;
-  border-left-color: #9C7D4D;
-  color: #9C7D4D;
+  padding-left: 36px;
+  border-left-color: #DAA520;
+  color: #FFD700;
 }
 
-/* Quote of the Day */
+.recent-item:hover::before {
+  width: 100%;
+}
+
+/* Quote of the Day - Luxurious */
 .quote-text {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 20px;
-  line-height: 1.7;
-  color: #2C2416;
+  font-size: 24px;
+  line-height: 1.8;
+  color: #E8D4A0;
   font-style: italic;
-  padding: 24px;
-  background: #FDFBF7;
-  border-left: 4px solid #B89968;
-  border-radius: 6px;
-  margin-bottom: 16px;
+  padding: 32px 40px;
+  background: rgba(139, 34, 34, 0.15);
+  border-left: 6px solid #DAA520;
+  margin-bottom: 20px;
   position: relative;
-  flex: 1;
+  min-height: 180px;
+  display: flex;
+  align-items: center;
 }
 
 .quote-text::before {
   content: '"';
-  font-size: 64px;
-  color: #D4C5B0;
+  font-size: 120px;
+  color: rgba(218, 165, 32, 0.15);
   position: absolute;
-  left: 16px;
-  top: 8px;
+  left: 20px;
+  top: -20px;
   line-height: 1;
   font-family: Georgia, serif;
   font-weight: bold;
 }
 
 .quote-attribution {
-  font-size: 14px;
-  color: #5C5347;
+  font-size: 15px;
+  color: #B8860B;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 20px;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
   text-align: right;
 }
 
 .quote-actions {
   display: flex;
-  gap: 12px;
-  padding-top: 20px;
-  border-top: 1px solid #EDE7DC;
+  gap: 14px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(139, 34, 34, 0.5);
 }
 
 .quote-action-btn {
   flex: 1;
-  background: #FDFBF7;
-  border: 2px solid #D4C5B0;
-  color: #5C5347;
-  padding: 12px 16px;
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(139, 34, 34, 0.4) 0%, rgba(139, 34, 34, 0.2) 100%);
+  border: 2px solid #8B2222;
+  color: #DAA520;
+  padding: 14px 20px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 0;
   cursor: pointer;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .quote-action-btn:hover {
-  background: #FFFFFF;
-  border-color: #B89968;
-  color: #2C2416;
-  transform: translateY(-2px);
+  background: linear-gradient(135deg, rgba(139, 34, 34, 0.6) 0%, rgba(139, 34, 34, 0.4) 100%);
+  border-color: #DAA520;
+  color: #FFD700;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 .quote-action-btn.primary {
-  background: #B89968;
-  border-color: #B89968;
-  color: #FFFFFF;
+  background: linear-gradient(135deg, #DAA520 0%, #B8860B 100%);
+  border-color: #DAA520;
+  color: #0A0908;
+  font-weight: 800;
 }
 
 .quote-action-btn.primary:hover {
-  background: #9C7D4D;
-  border-color: #9C7D4D;
+  background: linear-gradient(135deg, #FFD700 0%, #DAA520 100%);
+  box-shadow:
+    0 8px 20px rgba(218, 165, 32, 0.4),
+    0 0 30px rgba(218, 165, 32, 0.2);
 }
 
 /* Mobile Responsive */
 @media only screen and (max-width: 768px) {
-  .search-page {
-    padding: 0;
-  }
-
-  .navigation-bar {
-    justify-content: center;
-    margin-bottom: 24px;
-  }
-
-  .search-box-container {
-    margin-bottom: 32px;
-  }
-
   .search-box {
-    font-size: 28px;
-    height: 64px;
-    padding: 16px 20px;
+    font-size: 36px;
+    height: 75px;
+    padding: 0 24px;
   }
 
   .features-container {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 24px;
   }
 
   .word-of-day-card,
   .recent-searches-card,
   .quote-of-day-card {
-    padding: 24px;
+    padding: 32px;
   }
 
   .card-title {
-    font-size: 24px;
+    font-size: 28px;
   }
 
   .word-of-day-word {
-    font-size: 36px;
-    padding: 20px;
+    font-size: 44px;
+    padding: 24px;
   }
 
   .quote-text {
-    font-size: 18px;
-    padding: 20px;
+    font-size: 20px;
+    padding: 24px 32px;
   }
 
   .quote-actions {
     flex-direction: column;
-    gap: 10px;
   }
 }
 
 @media only screen and (max-width: 480px) {
   .search-box {
-    font-size: 24px;
-    height: 56px;
-    padding: 12px 16px;
-  }
-
-  .card-title {
-    font-size: 22px;
+    font-size: 28px;
+    height: 65px;
+    padding: 0 20px;
   }
 
   .word-of-day-word {
-    font-size: 32px;
+    font-size: 36px;
+  }
+
+  .card-title {
+    font-size: 24px;
   }
 }
