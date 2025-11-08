@@ -10,6 +10,7 @@
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  gap: 12px;
   margin-bottom: 32px;
 }
 
@@ -319,28 +320,21 @@
   margin: 0;
 }
 
-.word-of-day-word {
-  border: none;
-  background: transparent;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
-  padding: 0;
-}
-
-.recent-item {
-  border: none;
-  background: transparent;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
-  padding: 0;
-  font: inherit;
-}
 
 .quote-error {
   color: var(--text-tertiary);
   font-style: italic;
   padding: 24px;
   text-align: center;
+}
+
+/* Button resets for semantic elements */
+.recent-item {
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  display: block;
 }
