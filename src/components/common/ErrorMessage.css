@@ -1,0 +1,112 @@
+.error-message-container {
+    background: #FFF5F5;
+    border: 2px solid #DC2626;
+    border-radius: 8px;
+    padding: 24px;
+    margin: 24px 0;
+    animation: slideInDown 0.3s ease-out;
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.error-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.error-icon {
+    font-size: 32px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.error-text {
+    font-size: 16px;
+    color: #7C2D12;
+    margin: 0;
+    line-height: 1.5;
+    flex: 1;
+}
+
+.error-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+.error-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.retry-btn {
+    background: #C1694F;
+    color: #FFFFFF;
+}
+
+.retry-btn:hover {
+    background: #9A4F3A;
+    transform: translateY(-1px);
+}
+
+.retry-btn:active {
+    transform: translateY(0);
+}
+
+.dismiss-btn {
+    background: #FFFFFF;
+    color: #4A403A;
+    border: 2px solid #D4CEC7;
+}
+
+.dismiss-btn:hover {
+    background: #F5F1ED;
+    border-color: #C1694F;
+}
+
+.error-btn:focus-visible {
+    outline: 2px solid #C1694F;
+    outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+    .error-message-container {
+        padding: 16px;
+    }
+
+    .error-content {
+        gap: 12px;
+    }
+
+    .error-icon {
+        font-size: 24px;
+    }
+
+    .error-text {
+        font-size: 14px;
+    }
+
+    .error-actions {
+        flex-direction: column;
+    }
+
+    .error-btn {
+        width: 100%;
+    }
+}

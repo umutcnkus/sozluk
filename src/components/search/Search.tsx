@@ -3,6 +3,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import { WordDefinition } from '../../models/interfaces';
 import { getHistory, getFavorites, copyToClipboard, shareContent } from '../../helpers/StorageHelper';
 import { fetchRandomProverb, getTurkishWordSuggestions, QuoteOfDay } from '../../helpers/ProverbsHelper';
+import { LoadingSpinner } from '../common/LoadingSpinner';
 import './Search.css';
 
 export interface OnboardingPageRouterProps {
@@ -24,6 +25,7 @@ export interface SearchState {
     suggestions: string[];
     showSuggestions: boolean;
     selectedSuggestionIndex: number;
+    isLoadingQuote: boolean;
 }
 
 const WORD_LIST = [
@@ -45,7 +47,8 @@ export class Search extends React.Component<SearchProps, SearchState> {
             searchQuery: '',
             suggestions: [],
             showSuggestions: false,
-            selectedSuggestionIndex: -1
+            selectedSuggestionIndex: -1,
+            isLoadingQuote: false
         }
     }
 
@@ -60,11 +63,13 @@ export class Search extends React.Component<SearchProps, SearchState> {
     }
 
     loadQuoteOfDay = async () => {
+        this.setState({ isLoadingQuote: true });
         try {
             const quote = await fetchRandomProverb();
-            this.setState({ quoteOfDay: quote });
+            this.setState({ quoteOfDay: quote, isLoadingQuote: false });
         } catch (error) {
             console.error('Error loading quote of day:', error);
+            this.setState({ isLoadingQuote: false });
         }
     }
 
@@ -251,17 +256,21 @@ export class Search extends React.Component<SearchProps, SearchState> {
     }
 
     render() {
-        const { recentSearches, wordOfTheDay, quoteOfDay, searchQuery, suggestions, showSuggestions, selectedSuggestionIndex } = this.state;
+        const { recentSearches, wordOfTheDay, quoteOfDay, searchQuery, suggestions, showSuggestions, selectedSuggestionIndex, isLoadingQuote } = this.state;
         const favoritesCount = getFavorites().length;
 
         return (
             <React.Fragment>
-                <div className="search-page">
-                    <div className="navigation-bar">
-                        <button className="nav-button favorites-nav" onClick={this.handleFavoritesClick}>
-                            ★ Favorilerim ({favoritesCount})
+                <main className="search-page" role="main">
+                    <nav className="navigation-bar" aria-label="Ana navigasyon">
+                        <button
+                            className="nav-button favorites-nav"
+                            onClick={this.handleFavoritesClick}
+                            aria-label={`Favorilerime git, ${favoritesCount} favori kelime`}
+                        >
+                            <span aria-hidden="true">★</span> Favorilerim ({favoritesCount})
                         </button>
-                    </div>
+                    </nav>
 
                     <div className="search-box-container">
                         <input
@@ -272,85 +281,110 @@ export class Search extends React.Component<SearchProps, SearchState> {
                             onChange={this.handleSearchInput}
                             onKeyDown={this.handleKeyDown}
                             autoFocus
+                            aria-label="Kelime ara"
+                            aria-autocomplete="list"
+                            aria-controls="autocomplete-list"
+                            aria-expanded={showSuggestions}
+                            role="combobox"
                         />
                         {showSuggestions && (
-                            <div className="autocomplete-dropdown">
+                            <ul
+                                id="autocomplete-list"
+                                className="autocomplete-dropdown"
+                                role="listbox"
+                                aria-label="Kelime önerileri"
+                            >
                                 {suggestions.map((word, index) => (
-                                    <div
+                                    <li
                                         key={index}
                                         className={`autocomplete-item ${index === selectedSuggestionIndex ? 'selected' : ''}`}
                                         onClick={() => this.handleSuggestionClick(word)}
+                                        role="option"
+                                        aria-selected={index === selectedSuggestionIndex}
+                                        id={`suggestion-${index}`}
                                     >
                                         {word}
-                                    </div>
+                                    </li>
                                 ))}
-                            </div>
+                            </ul>
                         )}
                     </div>
 
                     <div className="features-container">
                         {wordOfTheDay && (
-                            <div className="word-of-day-card">
-                                <h3 className="card-title">Günün Kelimesi</h3>
-                                <div
+                            <section className="word-of-day-card" aria-labelledby="word-of-day-title">
+                                <h2 id="word-of-day-title" className="card-title">Günün Kelimesi</h2>
+                                <button
                                     className="word-of-day-word"
                                     onClick={() => this.handleSearchClick(wordOfTheDay)}
+                                    aria-label={`Günün kelimesi: ${wordOfTheDay}, aramak için tıklayın`}
                                 >
                                     {wordOfTheDay}
-                                </div>
-                            </div>
+                                </button>
+                            </section>
                         )}
 
-                        {quoteOfDay && (
-                            <div className="quote-of-day-card">
-                                <h3 className="card-title">Günün Sözü</h3>
-                                <div className="quote-text">
-                                    {quoteOfDay.text}
-                                </div>
-                                <div className="quote-attribution">
-                                    {quoteOfDay.word}
-                                </div>
-                                <div className="quote-actions">
-                                    <button
-                                        className="quote-action-btn"
-                                        onClick={this.handleCopyQuote}
-                                    >
-                                        Kopyala
-                                    </button>
-                                    <button
-                                        className="quote-action-btn"
-                                        onClick={this.handleShareQuote}
-                                    >
-                                        Paylaş
-                                    </button>
-                                    <button
-                                        className="quote-action-btn primary"
-                                        onClick={this.handleDownloadQuote}
-                                    >
-                                        İndir
-                                    </button>
-                                </div>
-                            </div>
-                        )}
+                        <section className="quote-of-day-card" aria-labelledby="quote-of-day-title">
+                            <h2 id="quote-of-day-title" className="card-title">Günün Sözü</h2>
+                            {isLoadingQuote ? (
+                                <LoadingSpinner size="small" />
+                            ) : quoteOfDay ? (
+                                <>
+                                    <blockquote className="quote-text">
+                                        {quoteOfDay.text}
+                                    </blockquote>
+                                    <cite className="quote-attribution">
+                                        {quoteOfDay.word}
+                                    </cite>
+                                    <div className="quote-actions" role="group" aria-label="Günün sözü işlemleri">
+                                        <button
+                                            className="quote-action-btn"
+                                            onClick={this.handleCopyQuote}
+                                            aria-label="Günün sözünü kopyala"
+                                        >
+                                            Kopyala
+                                        </button>
+                                        <button
+                                            className="quote-action-btn"
+                                            onClick={this.handleShareQuote}
+                                            aria-label="Günün sözünü paylaş"
+                                        >
+                                            Paylaş
+                                        </button>
+                                        <button
+                                            className="quote-action-btn primary"
+                                            onClick={this.handleDownloadQuote}
+                                            aria-label="Günün sözünü görsel olarak indir"
+                                        >
+                                            İndir
+                                        </button>
+                                    </div>
+                                </>
+                            ) : (
+                                <p className="quote-error" role="alert">Günün sözü yüklenemedi</p>
+                            )}
+                        </section>
 
                         {recentSearches.length > 0 && (
-                            <div className="recent-searches-card">
-                                <h3 className="card-title">Son Aramalar</h3>
-                                <div className="recent-list">
+                            <section className="recent-searches-card" aria-labelledby="recent-searches-title">
+                                <h2 id="recent-searches-title" className="card-title">Son Aramalar</h2>
+                                <ul className="recent-list">
                                     {recentSearches.map((item, index) => (
-                                        <div
-                                            key={index}
-                                            className="recent-item"
-                                            onClick={() => this.handleSearchClick(item.word)}
-                                        >
-                                            {item.word}
-                                        </div>
+                                        <li key={index}>
+                                            <button
+                                                className="recent-item"
+                                                onClick={() => this.handleSearchClick(item.word)}
+                                                aria-label={`${item.word} kelimesini ara`}
+                                            >
+                                                {item.word}
+                                            </button>
+                                        </li>
                                     ))}
-                                </div>
-                            </div>
+                                </ul>
+                            </section>
                         )}
                     </div>
-                </div>
+                </main>
             </React.Fragment>
         )
     }

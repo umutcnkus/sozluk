@@ -14,9 +14,9 @@
 }
 
 .nav-button {
-  background: #C1694F;
+  background: var(--accent-primary);
   border: none;
-  color: #FFFFFF;
+  color: var(--bg-surface);
   padding: 12px 24px;
   font-size: 16px;
   font-weight: 600;
@@ -27,7 +27,7 @@
 }
 
 .nav-button:hover {
-  background: #9A4F3A;
+  background: var(--accent-dark);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(193, 105, 79, 0.3);
 }
@@ -46,26 +46,26 @@
   height: 72px;
   font-size: 42px;
   font-weight: 600;
-  background: #FFFFFF;
-  color: #1A1614;
+  background: var(--bg-surface);
+  color: var(--text-primary);
   padding: 0 24px;
-  border: 2px solid #D4CEC7;
+  border: 2px solid var(--border-color);
   border-radius: 8px;
   transition: all 0.2s ease;
   box-shadow: 0 2px 12px rgba(26, 22, 20, 0.08);
 }
 
 .search-box::placeholder {
-  color: #7A6F69;
+  color: var(--text-tertiary);
 }
 
 .search-box:hover {
-  border-color: #C1694F;
+  border-color: var(--accent-primary);
 }
 
 .search-box:focus {
   outline: none;
-  border-color: #C1694F;
+  border-color: var(--accent-primary);
   box-shadow: 0 4px 16px rgba(193, 105, 79, 0.15);
 }
 
@@ -75,8 +75,8 @@
   top: calc(100% + 8px);
   left: 0;
   right: 0;
-  background: #FFFFFF;
-  border: 2px solid #D4CEC7;
+  background: var(--bg-surface);
+  border: 2px solid var(--border-color);
   border-radius: 8px;
   max-height: 320px;
   overflow-y: auto;
@@ -88,10 +88,10 @@
   padding: 16px 24px;
   font-size: 18px;
   font-weight: 500;
-  color: #1A1614;
+  color: var(--text-primary);
   cursor: pointer;
   transition: all 0.15s ease;
-  border-bottom: 1px solid #E8E3DD;
+  border-bottom: 1px solid var(--bg-secondary);
 }
 
 .autocomplete-item:last-child {
@@ -100,8 +100,8 @@
 
 .autocomplete-item:hover,
 .autocomplete-item.selected {
-  background: #F5F1ED;
-  color: #C1694F;
+  background: var(--bg-primary);
+  color: var(--accent-primary);
 }
 
 /* Feature Cards */
@@ -115,8 +115,8 @@
 .word-of-day-card,
 .recent-searches-card,
 .quote-of-day-card {
-  background: #FFFFFF;
-  border: 2px solid #D4CEC7;
+  background: var(--bg-surface);
+  border: 2px solid var(--border-color);
   border-radius: 8px;
   padding: 32px;
   transition: all 0.2s ease;
@@ -126,7 +126,7 @@
 .word-of-day-card:hover,
 .recent-searches-card:hover,
 .quote-of-day-card:hover {
-  border-color: #C1694F;
+  border-color: var(--accent-primary);
   transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(26, 22, 20, 0.12);
 }
@@ -136,7 +136,7 @@
   font-family: 'Cormorant Garamond', serif;
   font-size: 24px;
   font-weight: 700;
-  color: #1A1614;
+  color: var(--text-primary);
   margin: 0 0 24px 0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -147,20 +147,20 @@
   font-family: 'Cormorant Garamond', serif;
   font-size: 48px;
   font-weight: 700;
-  color: #C1694F;
+  color: var(--accent-primary);
   cursor: pointer;
   padding: 24px;
-  background: #F5F1ED;
-  border: 2px solid #E8E3DD;
+  background: var(--bg-primary);
+  border: 2px solid var(--bg-secondary);
   border-radius: 6px;
   transition: all 0.2s ease;
   text-align: center;
 }
 
 .word-of-day-word:hover {
-  background: #E8E3DD;
-  border-color: #C1694F;
-  color: #9A4F3A;
+  background: var(--bg-secondary);
+  border-color: var(--accent-primary);
+  color: var(--accent-dark);
 }
 
 /* Recent Searches */
@@ -173,19 +173,19 @@
 .recent-item {
   font-size: 18px;
   font-weight: 600;
-  color: #1A1614;
+  color: var(--text-primary);
   padding: 16px 20px;
-  background: #F5F1ED;
-  border-left: 4px solid #C1694F;
+  background: var(--bg-primary);
+  border-left: 4px solid var(--accent-primary);
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .recent-item:hover {
-  background: #E8E3DD;
+  background: var(--bg-secondary);
   padding-left: 24px;
-  color: #C1694F;
+  color: var(--accent-primary);
 }
 
 /* Quote of the Day */
@@ -193,18 +193,18 @@
   font-family: 'Cormorant Garamond', serif;
   font-size: 20px;
   line-height: 1.7;
-  color: #1A1614;
+  color: var(--text-primary);
   font-style: italic;
   padding: 24px;
-  background: #F5F1ED;
-  border-left: 4px solid #C1694F;
+  background: var(--bg-primary);
+  border-left: 4px solid var(--accent-primary);
   border-radius: 4px;
   margin-bottom: 16px;
 }
 
 .quote-attribution {
   font-size: 14px;
-  color: #4A403A;
+  color: var(--text-secondary);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -216,14 +216,14 @@
   display: flex;
   gap: 12px;
   padding-top: 20px;
-  border-top: 1px solid #E8E3DD;
+  border-top: 1px solid var(--bg-secondary);
 }
 
 .quote-action-btn {
   flex: 1;
-  background: #F5F1ED;
-  border: 2px solid #D4CEC7;
-  color: #4A403A;
+  background: var(--bg-primary);
+  border: 2px solid var(--border-color);
+  color: var(--text-secondary);
   padding: 12px 16px;
   font-size: 14px;
   font-weight: 600;
@@ -235,21 +235,21 @@
 }
 
 .quote-action-btn:hover {
-  background: #FFFFFF;
-  border-color: #C1694F;
-  color: #1A1614;
+  background: var(--bg-surface);
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
   transform: translateY(-2px);
 }
 
 .quote-action-btn.primary {
-  background: #C1694F;
-  border-color: #C1694F;
-  color: #FFFFFF;
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: var(--bg-surface);
 }
 
 .quote-action-btn.primary:hover {
-  background: #9A4F3A;
-  border-color: #9A4F3A;
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
 }
 
 /* Mobile */
@@ -309,4 +309,38 @@
   .card-title {
     font-size: 18px;
   }
+}
+
+/* Semantic list fixes */
+.autocomplete-dropdown,
+.recent-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.word-of-day-word {
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  padding: 0;
+}
+
+.recent-item {
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+}
+
+.quote-error {
+  color: var(--text-tertiary);
+  font-style: italic;
+  padding: 24px;
+  text-align: center;
 }

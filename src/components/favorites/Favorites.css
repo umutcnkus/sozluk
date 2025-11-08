@@ -2,8 +2,8 @@
 .favorites-container {
   width: 100%;
   max-width: 1200px;
-  background: #FFFFFF;
-  border: 2px solid #D4CEC7;
+  background: var(--bg-surface);
+  border: 2px solid var(--border-color);
   border-radius: 8px;
   padding: 48px;
   box-shadow: 0 8px 32px rgba(26, 22, 20, 0.12);
@@ -18,17 +18,17 @@
   gap: 16px;
   margin-bottom: 48px;
   padding-bottom: 32px;
-  border-bottom: 2px solid #E8E3DD;
+  border-bottom: 2px solid var(--bg-secondary);
 }
 
 .back-button {
   align-self: flex-start;
-  background: #F5F1ED;
-  border: 2px solid #D4CEC7;
+  background: var(--bg-primary);
+  border: 2px solid var(--border-color);
   padding: 10px 20px;
   font-size: 14px;
   font-weight: 600;
-  color: #4A403A;
+  color: var(--text-secondary);
   cursor: pointer;
   border-radius: 6px;
   transition: all 0.2s ease;
@@ -37,9 +37,9 @@
 }
 
 .back-button:hover {
-  background: #FFFFFF;
-  border-color: #C1694F;
-  color: #1A1614;
+  background: var(--bg-surface);
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
   transform: translateX(-4px);
 }
 
@@ -48,19 +48,19 @@
   font-family: 'Cormorant Garamond', serif;
   font-size: 56px;
   font-weight: 700;
-  color: #1A1614;
+  color: var(--text-primary);
   margin: 0;
   letter-spacing: -0.5px;
 }
 
 .favorites-count {
   font-size: 16px;
-  color: #4A403A;
+  color: var(--text-secondary);
   font-weight: 600;
-  background: #F5F1ED;
+  background: var(--bg-primary);
   padding: 8px 20px;
   border-radius: 20px;
-  border: 2px solid #E8E3DD;
+  border: 2px solid var(--bg-secondary);
 }
 
 /* Empty State */
@@ -75,7 +75,7 @@
 
 .empty-icon {
   font-size: 96px;
-  color: #D4CEC7;
+  color: var(--border-color);
   opacity: 0.5;
 }
 
@@ -83,13 +83,13 @@
   font-family: 'Cormorant Garamond', serif;
   font-size: 32px;
   font-weight: 700;
-  color: #1A1614;
+  color: var(--text-primary);
   margin: 0;
 }
 
 .empty-subtext {
   font-size: 18px;
-  color: #4A403A;
+  color: var(--text-secondary);
   margin: 0;
   max-width: 500px;
   text-align: center;
@@ -104,8 +104,8 @@
 }
 
 .favorite-card {
-  background: #F5F1ED;
-  border: 2px solid #D4CEC7;
+  background: var(--bg-primary);
+  border: 2px solid var(--border-color);
   border-radius: 6px;
   padding: 24px;
   display: flex;
@@ -117,8 +117,8 @@
 }
 
 .favorite-card:hover {
-  background: #FFFFFF;
-  border-color: #C1694F;
+  background: var(--bg-surface);
+  border-color: var(--accent-primary);
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(26, 22, 20, 0.1);
 }
@@ -127,7 +127,7 @@
   font-family: 'Cormorant Garamond', serif;
   font-size: 24px;
   font-weight: 700;
-  color: #1A1614;
+  color: var(--text-primary);
   cursor: pointer;
   flex: 1;
   transition: color 0.2s ease;
@@ -135,15 +135,15 @@
 }
 
 .favorite-word:hover {
-  color: #C1694F;
+  color: var(--accent-primary);
 }
 
 .remove-button {
   background: transparent;
-  border: 2px solid #D4CEC7;
+  border: 2px solid var(--border-color);
   font-size: 24px;
   font-weight: 300;
-  color: #7A6F69;
+  color: var(--text-tertiary);
   cursor: pointer;
   padding: 0;
   width: 36px;
@@ -158,9 +158,9 @@
 }
 
 .remove-button:hover {
-  background: #C1694F;
-  border-color: #C1694F;
-  color: #FFFFFF;
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: var(--bg-surface);
   transform: rotate(90deg);
 }
 
@@ -218,4 +218,72 @@
     height: 32px;
     font-size: 20px;
   }
+}
+
+/* Semantic list fixes */
+.favorites-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.favorite-card {
+  list-style: none;
+}
+
+.favorite-word {
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+}
+
+/* Export/Import buttons */
+.favorites-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.export-import-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.export-button,
+.import-button,
+.import-button-empty {
+  padding: 10px 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.export-button:hover,
+.import-button:hover,
+.import-button-empty:hover {
+  background: var(--accent-primary);
+  color: var(--bg-surface);
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+}
+
+.import-button-empty {
+  margin-top: 16px;
 }

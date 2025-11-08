@@ -4,7 +4,7 @@ SÖZLÜK Design System
 Turkish-inspired with clear hierarchy
 ===========================================
 
-Color Palette:
+Color Palette - Light Theme:
 - Primary Dark: #1A1614 (deep warm brown)
 - Primary: #2B2520 (warm brown)
 - Surface: #F5F1ED (warm off-white)
@@ -36,6 +36,34 @@ Spacing (8px base):
 - 2xl: 64px
 */
 
+:root {
+  /* Light Theme Colors */
+  --bg-primary: #F5F1ED;
+  --bg-secondary: #E8E3DD;
+  --bg-surface: #FFFFFF;
+  --text-primary: #1A1614;
+  --text-secondary: #4A403A;
+  --text-tertiary: #7A6F69;
+  --accent-primary: #C1694F;
+  --accent-dark: #9A4F3A;
+  --border-color: #D4CEC7;
+  --shadow: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  /* Dark Theme Colors */
+  --bg-primary: #1A1614;
+  --bg-secondary: #2B2520;
+  --bg-surface: #2B2520;
+  --text-primary: #F5F1ED;
+  --text-secondary: #D4CEC7;
+  --text-tertiary: #A89F95;
+  --accent-primary: #D4886F;
+  --accent-dark: #C1694F;
+  --border-color: #4A403A;
+  --shadow: rgba(0, 0, 0, 0.3);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -46,8 +74,9 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #F5F1ED;
-  color: #1A1614;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .App {
@@ -57,7 +86,8 @@ body {
   align-items: flex-start;
   justify-content: center;
   padding: 32px;
-  background: linear-gradient(135deg, #F5F1ED 0%, #E8E3DD 100%);
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  transition: background 0.3s ease;
 }
 
 ::-webkit-scrollbar {
@@ -65,20 +95,20 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #E8E3DD;
+  background: var(--bg-secondary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #C1694F;
+  background: var(--accent-primary);
   border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #9A4F3A;
+  background: var(--accent-dark);
 }
 
 *:focus {
-  outline: 2px solid #C1694F;
+  outline: 2px solid var(--accent-primary);
   outline-offset: 2px;
 }
 

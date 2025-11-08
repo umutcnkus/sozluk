@@ -4,9 +4,9 @@
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
-  background: #FFFFFF;
+  background: var(--bg-surface);
   padding: 48px;
-  border: 2px solid #D4CEC7;
+  border: 2px solid var(--border-color);
   border-radius: 8px;
   box-shadow: 0 8px 32px rgba(26, 22, 20, 0.12);
   animation: fadeIn 0.4s ease;
@@ -17,16 +17,16 @@
 }
 
 .word-card-container::-webkit-scrollbar-track {
-  background: #F5F1ED;
+  background: var(--bg-primary);
 }
 
 .word-card-container::-webkit-scrollbar-thumb {
-  background: #C1694F;
+  background: var(--accent-primary);
   border-radius: 6px;
 }
 
 .word-card-container::-webkit-scrollbar-thumb:hover {
-  background: #9A4F3A;
+  background: var(--accent-dark);
 }
 
 .inner-box {
@@ -35,12 +35,12 @@
 
 /* Back Button */
 .back-to-home-button {
-  background: #F5F1ED;
-  border: 2px solid #D4CEC7;
+  background: var(--bg-primary);
+  border: 2px solid var(--border-color);
   padding: 10px 20px;
   font-size: 14px;
   font-weight: 600;
-  color: #4A403A;
+  color: var(--text-secondary);
   cursor: pointer;
   border-radius: 6px;
   transition: all 0.2s ease;
@@ -50,15 +50,15 @@
 }
 
 .back-to-home-button:hover {
-  background: #FFFFFF;
-  border-color: #C1694F;
-  color: #1A1614;
+  background: var(--bg-surface);
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
   transform: translateX(-4px);
 }
 
 /* Title Section */
 .title-container {
-  border-bottom: 2px solid #E8E3DD;
+  border-bottom: 2px solid var(--bg-secondary);
   padding-bottom: 24px;
   margin-bottom: 32px;
 }
@@ -77,7 +77,7 @@
   font-size: 56px;
   font-weight: 700;
   margin: 0;
-  color: #1A1614;
+  color: var(--text-primary);
   letter-spacing: -0.5px;
   line-height: 1.1;
   flex: 1;
@@ -89,7 +89,7 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  color: #D4CEC7;
+  color: var(--border-color);
   transition: all 0.3s ease;
   padding: 0;
   line-height: 1;
@@ -97,12 +97,12 @@
 }
 
 .favorite-button:hover {
-  color: #C1694F;
+  color: var(--accent-primary);
   transform: scale(1.1);
 }
 
 .favorite-button.favorited {
-  color: #C1694F;
+  color: var(--accent-primary);
 }
 
 @keyframes heartBeat {
@@ -116,9 +116,9 @@
 
 /* Etymology */
 .etymology-section {
-  background: #F5F1ED;
-  border: 2px solid #E8E3DD;
-  border-left: 4px solid #C1694F;
+  background: var(--bg-primary);
+  border: 2px solid var(--bg-secondary);
+  border-left: 4px solid var(--accent-primary);
   padding: 20px 24px;
   margin-bottom: 16px;
   border-radius: 6px;
@@ -127,7 +127,7 @@
 .etymology-label {
   font-size: 12px;
   font-weight: 700;
-  color: #4A403A;
+  color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 8px;
@@ -136,7 +136,7 @@
 
 .etymology-text {
   font-size: 18px;
-  color: #1A1614;
+  color: var(--text-primary);
   font-weight: 500;
   line-height: 1.6;
 }
@@ -152,30 +152,30 @@
   font-family: 'Cormorant Garamond', serif;
   font-size: 32px;
   font-weight: 700;
-  color: #1A1614;
+  color: var(--text-primary);
   margin: 0 0 24px 0;
   padding-left: 16px;
-  border-left: 4px solid #C1694F;
+  border-left: 4px solid var(--accent-primary);
 }
 
 /* Definition Cards */
 .definition-card {
-  background: #F5F1ED;
+  background: var(--bg-primary);
   border-radius: 6px;
   padding: 20px 24px;
   margin-bottom: 16px;
-  border-left: 4px solid #E8E3DD;
+  border-left: 4px solid var(--bg-secondary);
   transition: all 0.2s ease;
 }
 
 .definition-card:hover {
-  border-left-color: #C1694F;
+  border-left-color: var(--accent-primary);
   box-shadow: 0 2px 12px rgba(26, 22, 20, 0.08);
 }
 
 .definition-number {
   font-weight: 700;
-  color: #C1694F;
+  color: var(--accent-primary);
   font-size: 18px;
   margin-right: 12px;
 }
@@ -183,7 +183,7 @@
 .definition-text {
   font-size: 18px;
   line-height: 1.7;
-  color: #1A1614;
+  color: var(--text-primary);
   display: inline;
 }
 
@@ -200,8 +200,8 @@
 .proverb-item,
 .example-item,
 .compound-item {
-  background: #FFFFFF;
-  border: 2px solid #E8E3DD;
+  background: var(--bg-surface);
+  border: 2px solid var(--bg-secondary);
   border-radius: 6px;
   padding: 24px;
   display: flex;
@@ -214,7 +214,7 @@
 .proverb-item:hover,
 .example-item:hover,
 .compound-item:hover {
-  border-color: #C1694F;
+  border-color: var(--accent-primary);
   box-shadow: 0 4px 16px rgba(26, 22, 20, 0.08);
 }
 
@@ -227,7 +227,7 @@
 }
 
 .proverb-bullet {
-  color: #C1694F;
+  color: var(--accent-primary);
   font-size: 24px;
   font-weight: bold;
   flex-shrink: 0;
@@ -238,7 +238,7 @@
   font-family: 'Cormorant Garamond', serif;
   font-size: 20px;
   line-height: 1.7;
-  color: #1A1614;
+  color: var(--text-primary);
   font-style: italic;
   font-weight: 500;
 }
@@ -252,17 +252,17 @@
   font-family: 'Cormorant Garamond', serif;
   font-size: 20px;
   line-height: 1.7;
-  color: #1A1614;
+  color: var(--text-primary);
   font-style: italic;
   margin-bottom: 12px;
   padding-left: 20px;
-  border-left: 4px solid #C1694F;
+  border-left: 4px solid var(--accent-primary);
   font-weight: 500;
 }
 
 .example-author {
   font-size: 14px;
-  color: #4A403A;
+  color: var(--text-secondary);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -272,14 +272,14 @@
 .compound-word {
   font-size: 20px;
   font-weight: 700;
-  color: #1A1614;
+  color: var(--text-primary);
   margin-bottom: 8px;
 }
 
 .compound-definition {
   font-size: 18px;
   line-height: 1.6;
-  color: #4A403A;
+  color: var(--text-secondary);
 }
 
 /* Action Buttons */
@@ -290,27 +290,27 @@
 }
 
 .action-btn {
-  background: #F5F1ED;
-  border: 2px solid #D4CEC7;
+  background: var(--bg-primary);
+  border: 2px solid var(--border-color);
   border-radius: 6px;
   padding: 10px 14px;
   font-size: 16px;
   cursor: pointer;
   transition: all 0.2s ease;
   min-width: 44px;
-  color: #4A403A;
+  color: var(--text-secondary);
 }
 
 .action-btn:hover {
-  background: #FFFFFF;
-  border-color: #C1694F;
+  background: var(--bg-surface);
+  border-color: var(--accent-primary);
   transform: translateY(-2px);
 }
 
 .copy-btn.copied {
   background: #6B8E4E;
   border-color: #6B8E4E;
-  color: #FFFFFF;
+  color: var(--bg-surface);
 }
 
 /* Mobile */
@@ -359,4 +359,17 @@
   .section-title {
     font-size: 24px;
   }
+}
+
+/* Semantic list fixes */
+.proverbs-list,
+.examples-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.proverb-item,
+.example-item {
+  list-style: none;
 }

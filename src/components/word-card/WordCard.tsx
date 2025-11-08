@@ -11,6 +11,8 @@ import {
     copyToClipboard,
     shareContent
 } from '../../helpers/StorageHelper';
+import { LoadingSpinner } from '../common/LoadingSpinner';
+import { ErrorMessage } from '../common/ErrorMessage';
 import './WordCard.css';
 
 export interface OnboardingPageRouterProps {
@@ -25,6 +27,8 @@ export interface WordCardState {
     wordData: WordData | null;
     isFavorited: boolean;
     copiedItem: string | null;
+    isLoading: boolean;
+    error: string | null;
 }
 
 export class WordCard extends React.Component<WordCardProps, WordCardState> {
@@ -37,7 +41,9 @@ export class WordCard extends React.Component<WordCardProps, WordCardState> {
             isVisible: false,
             wordData: null,
             isFavorited: false,
-            copiedItem: null
+            copiedItem: null,
+            isLoading: false,
+            error: null
         }
     }
 
@@ -77,6 +83,13 @@ export class WordCard extends React.Component<WordCardProps, WordCardState> {
     }
 
     getDefinition(word: string) {
+        // Set loading state
+        this.setState({
+            isLoading: true,
+            error: null,
+            isVisible: false
+        });
+
         // Use the new API to get full word data
         getWordData(word)
             .then((wordData: WordData | null) => {
@@ -94,16 +107,37 @@ export class WordCard extends React.Component<WordCardProps, WordCardState> {
                         word: word,
                         isVisible: true,
                         wordData: wordData,
-                        isFavorited: favorited
+                        isFavorited: favorited,
+                        isLoading: false,
+                        error: null
                     });
                 } else {
-                    throw new Error('Word not found');
+                    throw new Error('Kelime bulunamadı. Lütfen yazımını kontrol edin.');
                 }
             })
-            .catch(() => {
-                this.getDefinition("hata")
-                this.setState({ word: "hata"});
+            .catch((error) => {
+                this.setState({
+                    isLoading: false,
+                    error: error.message || 'Kelime aranırken bir hata oluştu. Lütfen internet bağlantınızı kontrol edin.',
+                    isVisible: false
+                });
             });
+    }
+
+    handleRetry = () => {
+        const { word } = this.state;
+        if (word) {
+            this.getDefinition(word);
+        } else {
+            const { word: urlWord } = this.props.match.params;
+            const wordToSearch = decodeURIComponent(urlWord).toLowerCase();
+            this.getDefinition(wordToSearch);
+        }
+    }
+
+    handleDismissError = () => {
+        this.setState({ error: null });
+        this.props.history.push('/');
     }
 
     handleBackToHome = () => {
@@ -111,21 +145,52 @@ export class WordCard extends React.Component<WordCardProps, WordCardState> {
     }
 
     render() {
-        const { wordData, isFavorited } = this.state;
+        const { wordData, isFavorited, isLoading, error } = this.state;
+
+        // Show loading spinner
+        if (isLoading) {
+            return (
+                <div className="word-card-container">
+                    <LoadingSpinner size="large" message="Kelime aranıyor..." />
+                </div>
+            );
+        }
+
+        // Show error message
+        if (error) {
+            return (
+                <div className="word-card-container">
+                    <div className="inner-box">
+                        <button className="back-to-home-button" onClick={this.handleBackToHome}>
+                            ← Ana Sayfa
+                        </button>
+                        <ErrorMessage
+                            message={error}
+                            onRetry={this.handleRetry}
+                            onDismiss={this.handleDismissError}
+                        />
+                    </div>
+                </div>
+            );
+        }
 
         return (this.state.isVisible &&
             <Animated className="word-card-container" animationIn="fadeIn" animationOut="fadeOut" animationInDuration={1000} isVisible={this.state.isVisible}>
-                <div className="inner-box">
-                    <button className="back-to-home-button" onClick={this.handleBackToHome}>
-                        ← Ana Sayfa
-                    </button>
-                    <div className="title-container">
+                <article className="inner-box" role="main" aria-label={`${this.state.word} kelimesinin tanımı`}>
+                    <nav aria-label="Sayfa navigasyonu">
+                        <button className="back-to-home-button" onClick={this.handleBackToHome} aria-label="Ana sayfaya dön">
+                            ← Ana Sayfa
+                        </button>
+                    </nav>
+                    <header className="title-container">
                         <div className="title-row">
-                            <h3 className="word-title">{this.state.word}</h3>
+                            <h1 className="word-title">{this.state.word}</h1>
                             <button
                                 className={`favorite-button ${isFavorited ? 'favorited' : ''}`}
                                 onClick={this.toggleFavorite}
                                 title={isFavorited ? 'Favorilerden çıkar' : 'Favorilere ekle'}
+                                aria-label={isFavorited ? 'Favorilerden çıkar' : 'Favorilere ekle'}
+                                aria-pressed={isFavorited}
                             >
                                 {isFavorited ? '★' : '☆'}
                             </button>
@@ -133,125 +198,129 @@ export class WordCard extends React.Component<WordCardProps, WordCardState> {
 
                         {/* Etymology Section */}
                         {wordData && wordData.lisan && (
-                            <div className="etymology-badge">
-                                <span className="etymology-icon">🌍</span>
+                            <div className="etymology-badge" role="note" aria-label="Etimoloji">
+                                <span className="etymology-icon" aria-hidden="true">🌍</span>
                                 <span className="etymology-text">{wordData.lisan}</span>
                             </div>
                         )}
 
                         {/* Pronunciation */}
                         {wordData && wordData.telaffuz && (
-                            <div className="pronunciation">
-                                <span className="pronunciation-icon">🔊</span>
+                            <div className="pronunciation" role="note" aria-label="Telaffuz">
+                                <span className="pronunciation-icon" aria-hidden="true">🔊</span>
                                 <span className="pronunciation-text">{wordData.telaffuz}</span>
                             </div>
                         )}
-                    </div>
+                    </header>
 
                     {/* Definitions */}
-                    <div className="definitions">
+                    <section className="definitions" aria-label="Tanımlar">
                         {this.state.definitions.map((definition, i) => (
                             <Animated animationIn="fadeInUp" animationOut="fadeOut" animationInDuration={1500 + i * 100} isVisible={this.state.isVisible} key={i}>
-                                <div className="definition-container">
-                                    <div className="definition-number">{i + 1}. </div>
+                                <div className="definition-container" role="listitem">
+                                    <div className="definition-number" aria-label={`${i + 1}. tanım`}>{i + 1}. </div>
                                     <div className="definition-text">{definition.text} </div>
                                 </div>
                             </Animated>
                         ))}
-                    </div>
+                    </section>
 
                     {/* Compound Words Section */}
                     {wordData && wordData.birlesikler && (
                         <Animated animationIn="fadeInUp" animationOut="fadeOut" animationInDuration={1800} isVisible={this.state.isVisible}>
-                            <div className="section-container compound-words-section">
-                                <h4 className="section-title">Birleşik Kelimeler</h4>
-                                <div className="compound-words">
+                            <section className="section-container compound-words-section" aria-labelledby="compound-words-title">
+                                <h2 id="compound-words-title" className="section-title">Birleşik Kelimeler</h2>
+                                <div className="compound-words" role="list">
                                     {wordData.birlesikler.split(',').map((compound, i) => (
-                                        <span className="compound-word-tag" key={i}>{compound.trim()}</span>
+                                        <span className="compound-word-tag" role="listitem" key={i}>{compound.trim()}</span>
                                     ))}
                                 </div>
-                            </div>
+                            </section>
                         </Animated>
                     )}
 
                     {/* Proverbs Section */}
                     {wordData && wordData.atasozu && wordData.atasozu.length > 0 && (
                         <Animated animationIn="fadeInUp" animationOut="fadeOut" animationInDuration={2000} isVisible={this.state.isVisible}>
-                            <div className="section-container proverbs-section">
-                                <h4 className="section-title">Atasözleri ve Deyimler</h4>
-                                <div className="proverbs-list">
+                            <section className="section-container proverbs-section" aria-labelledby="proverbs-title">
+                                <h2 id="proverbs-title" className="section-title">Atasözleri ve Deyimler</h2>
+                                <ul className="proverbs-list">
                                     {wordData.atasozu.map((proverb, i) => (
-                                        <div className="proverb-item" key={i}>
+                                        <li className="proverb-item" key={i}>
                                             <div className="proverb-content">
-                                                <span className="proverb-bullet">•</span>
+                                                <span className="proverb-bullet" aria-hidden="true">•</span>
                                                 <span className="proverb-text">{proverb.madde}</span>
                                             </div>
-                                            <div className="action-buttons">
+                                            <div className="action-buttons" role="group" aria-label="Atasözü işlemleri">
                                                 <button
                                                     className="action-btn copy-btn"
                                                     onClick={() => this.handleCopy(proverb.madde, `proverb-${i}`)}
                                                     title="Kopyala"
+                                                    aria-label={`${proverb.madde} atasözünü kopyala`}
                                                 >
-                                                    {this.state.copiedItem === `proverb-${i}` ? '✓' : '📋'}
+                                                    {this.state.copiedItem === `proverb-${i}` ? '✓ Kopyalandı' : 'Kopyala'}
                                                 </button>
                                                 <button
                                                     className="action-btn share-btn"
                                                     onClick={() => this.handleShare(`"${proverb.madde}"\n\n— Türk Atasözü`)}
                                                     title="Paylaş"
+                                                    aria-label={`${proverb.madde} atasözünü paylaş`}
                                                 >
-                                                    📤
+                                                    Paylaş
                                                 </button>
                                             </div>
-                                        </div>
+                                        </li>
                                     ))}
-                                </div>
-                            </div>
+                                </ul>
+                            </section>
                         </Animated>
                     )}
 
                     {/* Literary Examples Section */}
                     {wordData && wordData.orneklerListe && wordData.orneklerListe.length > 0 && (
                         <Animated animationIn="fadeInUp" animationOut="fadeOut" animationInDuration={2200} isVisible={this.state.isVisible}>
-                            <div className="section-container examples-section">
-                                <h4 className="section-title">Edebiyattan Örnekler</h4>
-                                <div className="examples-list">
+                            <section className="section-container examples-section" aria-labelledby="examples-title">
+                                <h2 id="examples-title" className="section-title">Edebiyattan Örnekler</h2>
+                                <ul className="examples-list">
                                     {wordData.orneklerListe.map((example, i) => {
                                         const authorName = example.yazar && example.yazar.length > 0
                                             ? example.yazar[0].tam_adi
                                             : '';
                                         const fullQuote = `"${example.ornek}"\n\n— ${authorName}`;
                                         return (
-                                            <div className="example-item" key={i}>
+                                            <li className="example-item" key={i}>
                                                 <div className="example-content">
                                                     <p className="example-text">"{example.ornek}"</p>
                                                     {authorName && (
                                                         <p className="example-author">— {authorName}</p>
                                                     )}
                                                 </div>
-                                                <div className="action-buttons">
+                                                <div className="action-buttons" role="group" aria-label="Örnek işlemleri">
                                                     <button
                                                         className="action-btn copy-btn"
                                                         onClick={() => this.handleCopy(fullQuote, `example-${i}`)}
                                                         title="Kopyala"
+                                                        aria-label={`Örneği kopyala: ${example.ornek.substring(0, 50)}...`}
                                                     >
-                                                        {this.state.copiedItem === `example-${i}` ? '✓' : '📋'}
+                                                        {this.state.copiedItem === `example-${i}` ? '✓ Kopyalandı' : 'Kopyala'}
                                                     </button>
                                                     <button
                                                         className="action-btn share-btn"
                                                         onClick={() => this.handleShare(fullQuote)}
                                                         title="Paylaş"
+                                                        aria-label={`Örneği paylaş: ${example.ornek.substring(0, 50)}...`}
                                                     >
-                                                        📤
+                                                        Paylaş
                                                     </button>
                                                 </div>
-                                            </div>
+                                            </li>
                                         );
                                     })}
-                                </div>
-                            </div>
+                                </ul>
+                            </section>
                         </Animated>
                     )}
-                </div>
+                </article>
             </Animated>
         )
     }
