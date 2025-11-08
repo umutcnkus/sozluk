@@ -80,14 +80,16 @@ export class Flashcards extends React.Component<FlashcardsProps, FlashcardsState
         this.setState({ isFlipped: !this.state.isFlipped });
     };
 
-    handleNext = () => {
+    handleNext = (e?: React.MouseEvent) => {
+        if (e) e.stopPropagation();
         const { currentIndex, cards } = this.state;
         if (currentIndex < cards.length - 1) {
             this.setState({ currentIndex: currentIndex + 1, isFlipped: false });
         }
     };
 
-    handlePrevious = () => {
+    handlePrevious = (e?: React.MouseEvent) => {
+        if (e) e.stopPropagation();
         const { currentIndex } = this.state;
         if (currentIndex > 0) {
             this.setState({ currentIndex: currentIndex - 1, isFlipped: false });

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { WordCard } from './components/word-card/WordCard';
-import { HashRouter as Router, Route } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import { Search } from './components/search/Search';
 import { Favorites } from './components/favorites/Favorites';
 import { Flashcards } from './components/flashcards/Flashcards';
@@ -14,10 +14,12 @@ function App() {
       <div className="App">
         <ThemeToggle />
         <Router>
-          <Route path="/favorites" exact component={Favorites} />
-          <Route path="/flashcards" exact component={Flashcards} />
-          <Route path="/:word/" exact component={WordCard} />
-          <Route path="/" exact component={Search} />
+          <Switch>
+            <Route path="/favorites" exact component={Favorites} />
+            <Route path="/flashcards" exact component={Flashcards} />
+            <Route path="/:word/" exact component={WordCard} />
+            <Route path="/" exact component={Search} />
+          </Switch>
         </Router>
       </div>
     </ThemeProvider>
