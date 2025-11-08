@@ -5,10 +5,11 @@
   max-height: 90vh;
   overflow-y: auto;
   background: var(--bg-surface);
-  padding: 48px;
+  padding: 48px 64px;
+  margin: 0 auto;
   border: 2px solid var(--border-color);
-  border-radius: 8px;
-  box-shadow: 0 8px 32px rgba(26, 22, 20, 0.12);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px var(--shadow);
   animation: fadeIn 0.4s ease;
 }
 
@@ -31,11 +32,13 @@
 
 .inner-box {
   width: 100%;
+  max-width: 750px;
+  margin: 0 auto;
 }
 
 /* Back Button */
 .back-to-home-button {
-  background: var(--bg-primary);
+  background: transparent;
   border: 2px solid var(--border-color);
   padding: 10px 20px;
   font-size: 14px;
@@ -45,35 +48,34 @@
   border-radius: 6px;
   transition: all 0.2s ease;
   margin-bottom: 32px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
 }
 
 .back-to-home-button:hover {
-  background: var(--bg-surface);
+  background: var(--bg-primary);
   border-color: var(--accent-primary);
-  color: var(--text-primary);
+  color: var(--accent-primary);
   transform: translateX(-4px);
 }
 
 /* Title Section */
 .title-container {
-  border-bottom: 2px solid var(--bg-secondary);
-  padding-bottom: 24px;
-  margin-bottom: 32px;
+  border-bottom: 3px solid var(--bg-secondary);
+  padding-bottom: 32px;
+  margin-bottom: 40px;
 }
 
 .title-row {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 24px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 /* Word Title - Display (56px) */
 .word-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 56px;
   font-weight: 700;
   margin: 0;
@@ -85,13 +87,13 @@
 
 /* Favorite Button */
 .favorite-button {
-  font-size: 36px;
+  font-size: 40px;
   background: transparent;
   border: none;
   cursor: pointer;
   color: var(--border-color);
   transition: all 0.3s ease;
-  padding: 0;
+  padding: 4px;
   line-height: 1;
   flex-shrink: 0;
 }
@@ -105,245 +107,241 @@
   color: var(--accent-primary);
 }
 
-@keyframes heartBeat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
+.favorite-button:active {
+  transform: scale(0.95);
 }
 
-.favorite-button.favorited {
-  animation: heartBeat 0.3s ease;
-}
-
-/* Etymology */
-.etymology-section {
+/* Etymology and Pronunciation */
+.etymology-badge,
+.pronunciation {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   background: var(--bg-primary);
-  border: 2px solid var(--bg-secondary);
-  border-left: 4px solid var(--accent-primary);
-  padding: 20px 24px;
-  margin-bottom: 16px;
-  border-radius: 6px;
-}
-
-.etymology-label {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  border: 1px solid var(--border-color);
+  padding: 8px 16px;
+  margin-right: 12px;
   margin-bottom: 8px;
-  display: block;
+  border-radius: 6px;
+  font-size: 15px;
+  color: var(--text-secondary);
+  font-weight: 500;
 }
 
-.etymology-text {
+.etymology-icon,
+.pronunciation-icon {
   font-size: 18px;
+  opacity: 0.8;
+}
+
+.etymology-text,
+.pronunciation-text {
+  font-size: 15px;
   color: var(--text-primary);
-  font-weight: 500;
-  line-height: 1.6;
+  font-weight: 600;
 }
 
 /* Sections */
-.meanings-section,
-.content-section {
-  margin-bottom: 32px;
+.section-container {
+  margin-bottom: 48px;
 }
 
-/* Section Titles - H2 (32px) */
+.section-container:last-child {
+  margin-bottom: 0;
+}
+
+/* Section Titles - Clear Hierarchy */
 .section-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 32px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 28px;
   font-weight: 700;
   color: var(--text-primary);
   margin: 0 0 24px 0;
-  padding-left: 16px;
-  border-left: 4px solid var(--accent-primary);
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--bg-secondary);
 }
 
-/* Definition Cards */
-.definition-card {
+/* Definitions List */
+.definitions {
+  margin-bottom: 48px;
+}
+
+.definition-container {
   background: var(--bg-primary);
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 20px 24px;
   margin-bottom: 16px;
-  border-left: 4px solid var(--bg-secondary);
+  border-left: 4px solid var(--accent-primary);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
   transition: all 0.2s ease;
 }
 
-.definition-card:hover {
-  border-left-color: var(--accent-primary);
-  box-shadow: 0 2px 12px rgba(26, 22, 20, 0.08);
+.definition-container:hover {
+  background: var(--bg-secondary);
+  box-shadow: 0 2px 8px var(--shadow);
 }
 
 .definition-number {
   font-weight: 700;
   color: var(--accent-primary);
-  font-size: 18px;
-  margin-right: 12px;
+  font-size: 20px;
+  flex-shrink: 0;
+  line-height: 1.6;
 }
 
 .definition-text {
   font-size: 18px;
   line-height: 1.7;
   color: var(--text-primary);
-  display: inline;
-}
-
-/* Content Lists */
-.proverbs-list,
-.examples-list,
-.compounds-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-/* Content Items */
-.proverb-item,
-.example-item,
-.compound-item {
-  background: var(--bg-surface);
-  border: 2px solid var(--bg-secondary);
-  border-radius: 6px;
-  padding: 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 16px;
-  transition: all 0.2s ease;
-}
-
-.proverb-item:hover,
-.example-item:hover,
-.compound-item:hover {
-  border-color: var(--accent-primary);
-  box-shadow: 0 4px 16px rgba(26, 22, 20, 0.08);
-}
-
-/* Proverbs */
-.proverb-content {
   flex: 1;
+}
+
+/* Compound Words - Tag Style with Spacing */
+.compound-words {
   display: flex;
-  align-items: flex-start;
+  flex-wrap: wrap;
   gap: 12px;
 }
 
+.compound-word-tag {
+  display: inline-block;
+  background: var(--bg-primary);
+  border: 2px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+.compound-word-tag:hover {
+  border-color: var(--accent-primary);
+  background: var(--bg-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--shadow);
+}
+
+/* Proverbs and Examples - Streamlined */
+.proverbs-list,
+.examples-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.proverb-item,
+.example-item {
+  background: var(--bg-surface);
+  border: 2px solid var(--bg-secondary);
+  border-radius: 8px;
+  padding: 24px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.proverb-item:hover,
+.example-item:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.proverb-content,
+.example-content {
+  flex: 1;
+  margin-bottom: 16px;
+}
+
 .proverb-bullet {
-  color: var(--accent-primary);
-  font-size: 24px;
-  font-weight: bold;
-  flex-shrink: 0;
-  line-height: 1.6;
+  display: none;
 }
 
 .proverb-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.7;
   color: var(--text-primary);
-  font-style: italic;
   font-weight: 500;
 }
 
-/* Literary Examples */
-.example-content {
-  flex: 1;
-}
-
-.example-quote {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 20px;
+.example-text {
+  font-size: 18px;
   line-height: 1.7;
   color: var(--text-primary);
   font-style: italic;
-  margin-bottom: 12px;
-  padding-left: 20px;
-  border-left: 4px solid var(--accent-primary);
-  font-weight: 500;
+  margin: 0 0 12px 0;
 }
 
 .example-author {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-secondary);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  font-weight: 600;
+  margin: 0;
 }
 
-/* Compound Words */
-.compound-word {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 8px;
-}
-
-.compound-definition {
-  font-size: 18px;
-  line-height: 1.6;
-  color: var(--text-secondary);
-}
-
-/* Action Buttons */
+/* Action Buttons - Streamlined in Row */
 .action-buttons {
   display: flex;
   gap: 8px;
-  flex-shrink: 0;
+  flex-wrap: wrap;
 }
 
 .action-btn {
-  background: var(--bg-primary);
-  border: 2px solid var(--border-color);
-  border-radius: 6px;
-  padding: 10px 14px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  min-width: 44px;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 600;
   color: var(--text-secondary);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  letter-spacing: 0.2px;
 }
 
 .action-btn:hover {
-  background: var(--bg-surface);
+  background: var(--accent-primary);
   border-color: var(--accent-primary);
-  transform: translateY(-2px);
-}
-
-.copy-btn.copied {
-  background: #6B8E4E;
-  border-color: #6B8E4E;
   color: var(--bg-surface);
+  transform: translateY(-1px);
 }
 
-/* Mobile */
+.action-btn:active {
+  transform: translateY(0);
+}
+
+/* Mobile Responsive */
 @media only screen and (max-width: 768px) {
   .word-card-container {
     padding: 32px 24px;
+  }
+
+  .inner-box {
+    max-width: 100%;
   }
 
   .word-title {
     font-size: 42px;
   }
 
-  .favorite-button {
-    font-size: 32px;
-  }
-
   .section-title {
-    font-size: 28px;
+    font-size: 24px;
   }
 
-  .proverb-item,
-  .example-item,
-  .compound-item {
-    flex-direction: column;
-    gap: 12px;
+  .definition-text,
+  .proverb-text,
+  .example-text {
+    font-size: 16px;
   }
 
-  .action-buttons {
-    width: 100%;
+  .compound-words {
+    gap: 8px;
   }
 
-  .action-btn {
-    flex: 1;
+  .compound-word-tag {
+    font-size: 14px;
+    padding: 6px 12px;
   }
 }
 
@@ -357,64 +355,15 @@
   }
 
   .section-title {
-    font-size: 24px;
+    font-size: 22px;
   }
-}
 
-/* Semantic list fixes */
-.proverbs-list,
-.examples-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+  .title-container {
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+  }
 
-.proverb-item,
-.example-item {
-  list-style: none;
-}
-
-/* Definitions List */
-.definitions {
-  margin-bottom: 32px;
-}
-
-.definition-container {
-  background: var(--bg-primary);
-  border-radius: 6px;
-  padding: 16px 20px;
-  margin-bottom: 12px;
-  border-left: 4px solid var(--bg-secondary);
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  transition: all 0.2s ease;
-}
-
-.definition-container:hover {
-  border-left-color: var(--accent-primary);
-  background: var(--bg-secondary);
-}
-
-.definition-number {
-  font-weight: 700;
-  color: var(--accent-primary);
-  font-size: 18px;
-  flex-shrink: 0;
-}
-
-.definition-text {
-  font-size: 18px;
-  line-height: 1.7;
-  color: var(--text-primary);
-  flex: 1;
-}
-
-/* Section Container */
-.section-container {
-  margin-bottom: 32px;
-}
-
-.section-container:last-child {
-  margin-bottom: 0;
+  .section-container {
+    margin-bottom: 32px;
+  }
 }

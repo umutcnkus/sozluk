@@ -37,31 +37,33 @@ Spacing (8px base):
 */
 
 :root {
-  /* Light Theme Colors */
+  /* Light Theme Colors - WCAG AA Compliant */
   --bg-primary: #F5F1ED;
   --bg-secondary: #E8E3DD;
   --bg-surface: #FFFFFF;
-  --text-primary: #1A1614;
-  --text-secondary: #4A403A;
-  --text-tertiary: #7A6F69;
-  --accent-primary: #C1694F;
-  --accent-dark: #9A4F3A;
-  --border-color: #D4CEC7;
-  --shadow: rgba(0, 0, 0, 0.1);
+  --text-primary: #1A1614;        /* Contrast 14:1 - Excellent */
+  --text-secondary: #2B2520;      /* Contrast 11:1 - Improved from #4A403A */
+  --text-tertiary: #5A4F47;       /* Contrast 6:1 - Improved from #7A6F69 */
+  --accent-primary: #B74F2E;      /* Vibrant terracotta - Improved from #C1694F */
+  --accent-dark: #8B3A1E;         /* Deep burnt terracotta */
+  --border-color: #C4BEB7;        /* Slightly darker for visibility */
+  --shadow: rgba(0, 0, 0, 0.12);
+  --success: #5A7A3E;             /* Darker olive for better contrast */
 }
 
 [data-theme="dark"] {
-  /* Dark Theme Colors */
+  /* Dark Theme Colors - WCAG AA Compliant */
   --bg-primary: #1A1614;
   --bg-secondary: #2B2520;
-  --bg-surface: #2B2520;
-  --text-primary: #F5F1ED;
-  --text-secondary: #D4CEC7;
-  --text-tertiary: #A89F95;
-  --accent-primary: #D4886F;
-  --accent-dark: #C1694F;
-  --border-color: #4A403A;
-  --shadow: rgba(0, 0, 0, 0.3);
+  --bg-surface: #342F2A;          /* Lighter surface for better contrast */
+  --text-primary: #F5F1ED;        /* Contrast 14:1 */
+  --text-secondary: #D4CEC7;      /* Contrast 9:1 */
+  --text-tertiary: #B8B0A7;       /* Contrast 6:1 - Improved */
+  --accent-primary: #E89772;      /* Brighter terracotta for dark mode */
+  --accent-dark: #D4886F;
+  --border-color: #544E47;        /* More visible border */
+  --shadow: rgba(0, 0, 0, 0.4);
+  --success: #8AB65F;             /* Brighter olive for dark mode */
 }
 
 * {
