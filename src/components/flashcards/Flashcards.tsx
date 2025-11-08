@@ -80,37 +80,41 @@ export class Flashcards extends React.Component<FlashcardsProps, FlashcardsState
         this.setState({ isFlipped: !this.state.isFlipped });
     };
 
-    handleNext = (e?: React.MouseEvent) => {
-        if (e) e.stopPropagation();
-        const { currentIndex, cards } = this.state;
-        if (currentIndex < cards.length - 1) {
-            this.setState({ currentIndex: currentIndex + 1, isFlipped: false });
-        }
+    handleNext = () => {
+        this.setState(prevState => {
+            if (prevState.currentIndex < prevState.cards.length - 1) {
+                return { currentIndex: prevState.currentIndex + 1, isFlipped: false };
+            }
+            return null;
+        });
     };
 
-    handlePrevious = (e?: React.MouseEvent) => {
-        if (e) e.stopPropagation();
-        const { currentIndex } = this.state;
-        if (currentIndex > 0) {
-            this.setState({ currentIndex: currentIndex - 1, isFlipped: false });
-        }
+    handlePrevious = () => {
+        this.setState(prevState => {
+            if (prevState.currentIndex > 0) {
+                return { currentIndex: prevState.currentIndex - 1, isFlipped: false };
+            }
+            return null;
+        });
     };
 
     handleQuizAnswer = (isCorrect: boolean) => {
-        const { currentIndex, quizAnswers, cards } = this.state;
-        const newAnswers = { ...quizAnswers, [currentIndex]: isCorrect };
-        const newScore = isCorrect ? this.state.score + 1 : this.state.score;
+        const { currentIndex, cards } = this.state;
 
-        this.setState({ quizAnswers: newAnswers, score: newScore });
+        // Update answer and score immediately
+        this.setState(prevState => ({
+            quizAnswers: { ...prevState.quizAnswers, [currentIndex]: isCorrect },
+            score: isCorrect ? prevState.score + 1 : prevState.score
+        }));
 
-        // Auto-advance after a short delay
+        // Auto-advance after a short delay to show feedback
         setTimeout(() => {
-            if (currentIndex < cards.length - 1) {
-                this.setState({ currentIndex: currentIndex + 1 });
+            if (this.state.currentIndex + 1 < cards.length) {
+                this.setState({ currentIndex: this.state.currentIndex + 1 });
             } else {
                 this.setState({ showResults: true });
             }
-        }, 500);
+        }, 1000);
     };
 
     handleBackToMenu = () => {
