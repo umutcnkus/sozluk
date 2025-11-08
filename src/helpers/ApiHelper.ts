@@ -31,3 +31,47 @@ export const getWordData = (word: string): Promise<WordData | null> => {
             return null;
         });
 };
+
+// Autocomplete with TDK API
+export const getAutocompleteSuggestions = (query: string): Promise<string[]> => {
+    if (!query || query.length < 2) {
+        return Promise.resolve([]);
+    }
+
+    const requestUrl = basePath + 'gts?ara=' + encodeURIComponent(query);
+    return fetch(requestUrl)
+        .then((response) => response.json())
+        .then((data) => {
+            if (data && Array.isArray(data)) {
+                // Extract word suggestions from API results
+                return data.slice(0, 10).map((item: WordData) => item.madde);
+            }
+            return [];
+        })
+        .catch((error) => {
+            console.error('Error fetching autocomplete:', error);
+            return [];
+        });
+};
+
+// Get related words (compounds)
+export const getRelatedWords = (word: string): Promise<{ compounds: string[], related: string[] }> => {
+    return getWordData(word)
+        .then((wordData) => {
+            if (!wordData) {
+                return { compounds: [], related: [] };
+            }
+
+            const compounds = wordData.birlesikler
+                ? wordData.birlesikler.split(',').map(w => w.trim()).filter(w => w.length > 0)
+                : [];
+
+            // Get words from same etymology/origin as "related"
+            const related: string[] = [];
+
+            return { compounds, related };
+        })
+        .catch(() => {
+            return { compounds: [], related: [] };
+        });
+};

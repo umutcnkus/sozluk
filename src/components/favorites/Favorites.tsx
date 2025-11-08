@@ -45,6 +45,10 @@ export class Favorites extends React.Component<FavoritesProps, FavoritesState> {
         this.props.history.push('/');
     }
 
+    handleFlashcardsClick = () => {
+        this.props.history.push('/flashcards');
+    }
+
     handleExport = () => {
         const { favorites } = this.state;
         const dataStr = JSON.stringify(favorites, null, 2);
@@ -107,6 +111,9 @@ export class Favorites extends React.Component<FavoritesProps, FavoritesState> {
                     </div>
                     {favorites.length > 0 && (
                         <div className="export-import-buttons">
+                            <button className="flashcards-button" onClick={this.handleFlashcardsClick} aria-label="Flashcards ile çalış">
+                                📇 Çalış
+                            </button>
                             <button className="export-button" onClick={this.handleExport} aria-label="Favorileri dışa aktar">
                                 Dışa Aktar
                             </button>

@@ -14,11 +14,24 @@
 .favorites-header {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 16px;
   margin-bottom: 48px;
   padding-bottom: 32px;
   border-bottom: 2px solid var(--bg-secondary);
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.export-import-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .back-button {
@@ -242,25 +255,6 @@
 }
 
 /* Export/Import buttons */
-.favorites-header {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 32px;
-}
-
-.header-content {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.export-import-buttons {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
 .export-button,
 .import-button,
 .import-button-empty {
@@ -286,4 +280,16 @@
 
 .import-button-empty {
   margin-top: 16px;
+}
+
+.flashcards-button {
+  background: var(--accent-primary);
+  color: var(--bg-surface);
+  border-color: var(--accent-primary);
+}
+
+.flashcards-button:hover {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+  transform: translateY(-2px);
 }

@@ -2,7 +2,8 @@ import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { WordDefinition } from '../../models/interfaces';
 import { getHistory, getFavorites, copyToClipboard, shareContent } from '../../helpers/StorageHelper';
-import { fetchRandomProverb, getTurkishWordSuggestions, QuoteOfDay } from '../../helpers/ProverbsHelper';
+import { fetchRandomProverb, QuoteOfDay } from '../../helpers/ProverbsHelper';
+import { getAutocompleteSuggestions } from '../../helpers/ApiHelper';
 import { LoadingSpinner } from '../common/LoadingSpinner';
 import './Search.css';
 
@@ -84,12 +85,17 @@ export class Search extends React.Component<SearchProps, SearchState> {
         const query = e.target.value;
         this.setState({ searchQuery: query });
 
-        if (query.length > 0) {
-            const suggestions = getTurkishWordSuggestions(query);
-            this.setState({
-                suggestions,
-                showSuggestions: suggestions.length > 0,
-                selectedSuggestionIndex: -1
+        if (query.length >= 2) {
+            // Use TDK API for autocomplete
+            getAutocompleteSuggestions(query).then(suggestions => {
+                // Only update if the query hasn't changed
+                if (this.state.searchQuery === query) {
+                    this.setState({
+                        suggestions,
+                        showSuggestions: suggestions.length > 0,
+                        selectedSuggestionIndex: -1
+                    });
+                }
             });
         } else {
             this.setState({
@@ -147,6 +153,10 @@ export class Search extends React.Component<SearchProps, SearchState> {
 
     handleFavoritesClick = () => {
         this.props.history.push('/favorites');
+    }
+
+    handleFlashcardsClick = () => {
+        this.props.history.push('/flashcards');
     }
 
     handleCopyQuote = async () => {
@@ -269,6 +279,13 @@ export class Search extends React.Component<SearchProps, SearchState> {
                             aria-label={`Favorilerime git, ${favoritesCount} favori kelime`}
                         >
                             <span aria-hidden="true">★</span> Favorilerim ({favoritesCount})
+                        </button>
+                        <button
+                            className="nav-button flashcards-nav"
+                            onClick={this.handleFlashcardsClick}
+                            aria-label="Flashcards ile çalış"
+                        >
+                            <span aria-hidden="true">📇</span> Çalış
                         </button>
                     </nav>
 

@@ -4,6 +4,7 @@ import { WordCard } from './components/word-card/WordCard';
 import { HashRouter as Router, Route } from "react-router-dom";
 import { Search } from './components/search/Search';
 import { Favorites } from './components/favorites/Favorites';
+import { Flashcards } from './components/flashcards/Flashcards';
 import { ThemeProvider } from './context/ThemeContext';
 import { ThemeToggle } from './components/common/ThemeToggle';
 
@@ -14,6 +15,7 @@ function App() {
         <ThemeToggle />
         <Router>
           <Route path="/favorites" exact component={Favorites} />
+          <Route path="/flashcards" exact component={Flashcards} />
           <Route path="/:word/" exact component={WordCard} />
           <Route path="/" exact component={Search} />
         </Router>
