@@ -96,12 +96,21 @@ export class Flashcards extends React.Component<FlashcardsProps, FlashcardsState
         }
     };
 
-    handleQuizAnswer = (isCorrect: boolean, index: number) => {
-        const { quizAnswers } = this.state;
-        const newAnswers = { ...quizAnswers, [index]: isCorrect };
-        const newScore = Object.values(newAnswers).filter(v => v === true).length;
+    handleQuizAnswer = (isCorrect: boolean) => {
+        const { currentIndex, quizAnswers, cards } = this.state;
+        const newAnswers = { ...quizAnswers, [currentIndex]: isCorrect };
+        const newScore = isCorrect ? this.state.score + 1 : this.state.score;
 
         this.setState({ quizAnswers: newAnswers, score: newScore });
+
+        // Auto-advance after a short delay
+        setTimeout(() => {
+            if (currentIndex < cards.length - 1) {
+                this.setState({ currentIndex: currentIndex + 1 });
+            } else {
+                this.setState({ showResults: true });
+            }
+        }, 500);
     };
 
     handleBackToMenu = () => {
@@ -166,6 +175,15 @@ export class Flashcards extends React.Component<FlashcardsProps, FlashcardsState
         }
 
         const currentCard = cards[currentIndex];
+
+        // Safety check
+        if (!currentCard) {
+            return (
+                <div className="flashcards-container">
+                    <LoadingSpinner size="large" message="Yükleniyor..." />
+                </div>
+            );
+        }
 
         if (mode === 'flashcards') {
             return (
@@ -239,75 +257,57 @@ export class Flashcards extends React.Component<FlashcardsProps, FlashcardsState
             );
         }
 
-        // Show all words at once in quiz mode
-        const answeredCount = Object.keys(quizAnswers).length;
-        const allAnswered = answeredCount === cards.length;
+        // Quiz mode - one word at a time
+        const hasAnswered = quizAnswers[currentIndex] !== undefined;
 
         return (
             <div className="flashcards-container">
                 <div className="flashcards-header">
                     <button className="back-button" onClick={this.handleBackToMenu}>
-                        ← Geri
+                        ← Çık
                     </button>
-                    <div className="quiz-progress">
-                        Cevaplanan: {answeredCount} / {cards.length}
+                    <div className="quiz-score">
+                        Skor: {score} / {currentIndex}
+                    </div>
+                    <div className="progress">
+                        {currentIndex + 1} / {cards.length}
                     </div>
                 </div>
 
-                <div className="quiz-instructions">
-                    <p>Her kelimeyi tanımlarıyla birlikte incele ve bilip bilmediğini işaretle:</p>
-                </div>
+                <div className="quiz-card">
+                    <h2 className="quiz-word">{currentCard.word}</h2>
+                    <div className="quiz-definitions">
+                        {currentCard.definitions.map((def, i) => (
+                            <p key={i} className="quiz-definition">{i + 1}. {def}</p>
+                        ))}
+                    </div>
 
-                <div className="quiz-list">
-                    {cards.map((card, index) => {
-                        const answered = quizAnswers[index];
-                        const hasAnswer = answered !== undefined;
-
-                        return (
-                            <div
-                                key={index}
-                                className={`quiz-list-item ${hasAnswer ? 'answered' : ''} ${hasAnswer && answered ? 'correct' : ''} ${hasAnswer && !answered ? 'incorrect' : ''}`}
-                            >
-                                <div className="quiz-list-word">
-                                    <h3>{card.word}</h3>
-                                </div>
-                                <div className="quiz-list-definitions">
-                                    {card.definitions.map((def, i) => (
-                                        <p key={i}>{i + 1}. {def}</p>
-                                    ))}
-                                </div>
-                                {!hasAnswer ? (
-                                    <div className="quiz-list-buttons">
-                                        <button
-                                            className="btn-quiz-item btn-no"
-                                            onClick={() => this.handleQuizAnswer(false, index)}
-                                        >
-                                            Bilmiyorum ✗
-                                        </button>
-                                        <button
-                                            className="btn-quiz-item btn-yes"
-                                            onClick={() => this.handleQuizAnswer(true, index)}
-                                        >
-                                            Biliyorum ✓
-                                        </button>
-                                    </div>
-                                ) : (
-                                    <div className="quiz-list-result">
-                                        {answered ? '✓ Biliyordum' : '✗ Bilmiyordum'}
-                                    </div>
-                                )}
+                    {!hasAnswered && (
+                        <div className="quiz-buttons">
+                            <p className="quiz-question">Bu kelimeyi biliyor muydun?</p>
+                            <div className="answer-buttons">
+                                <button
+                                    className="btn-answer btn-no"
+                                    onClick={() => this.handleQuizAnswer(false)}
+                                >
+                                    Bilmiyordum ✗
+                                </button>
+                                <button
+                                    className="btn-answer btn-yes"
+                                    onClick={() => this.handleQuizAnswer(true)}
+                                >
+                                    Biliyordum ✓
+                                </button>
                             </div>
-                        );
-                    })}
-                </div>
+                        </div>
+                    )}
 
-                {allAnswered && (
-                    <div className="quiz-complete-banner">
-                        <button className="btn-primary" onClick={() => this.setState({ showResults: true })}>
-                            Sonuçları Gör ({score} / {cards.length})
-                        </button>
-                    </div>
-                )}
+                    {hasAnswered && (
+                        <div className={`answer-feedback ${quizAnswers[currentIndex] ? 'correct' : 'incorrect'}`}>
+                            {quizAnswers[currentIndex] ? '✓ Harika!' : '✗ Bir daha bak'}
+                        </div>
+                    )}
+                </div>
             </div>
         );
     }
